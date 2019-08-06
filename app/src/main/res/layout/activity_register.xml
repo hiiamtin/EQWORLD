@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".RegisterActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,17 +16,16 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="เข้าสู่ระบบ"
+            android:text="Create a new account"
             android:textSize="20sp"/>
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/email"
-            android:inputType="textEmailAddress"
+            android:id="@+id/username"
             android:layout_marginTop="10dp"
             app:met_floatingLabel="normal"
-            android:hint="Email"/>
+            android:hint="Display Name"/>
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:layout_width="match_parent"
@@ -37,14 +36,24 @@
             app:met_floatingLabel="normal"
             android:hint="Password"/>
 
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/email"
+            android:inputType="textEmailAddress"
+            android:layout_marginTop="10dp"
+            app:met_floatingLabel="normal"
+            android:hint="Email"/>
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ลงชื่อเข้าใช้"
-            android:id="@+id/btn_login"
+            android:text="Register"
+            android:id="@+id/btn_reg"
             android:layout_marginTop="10dp"
             android:background="@color/colorPrimaryDark"
             android:textColor="#ffffff"/>
+
     </LinearLayout>
 
 </RelativeLayout>
