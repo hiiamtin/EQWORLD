@@ -2,6 +2,7 @@ package com.eq.eq_world;
 
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -15,8 +16,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.rengwuxian.materialedittext.MaterialEditText;
+
+import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -74,14 +79,34 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
+                            FirebaseUser firebaseUser = auth.getCurrentUser();
+                            assert firebaseUser != null;
+                            String userid = firebaseUser.getUid();
 
-                            Toast.makeText(RegisterActivity.this, "ลงทะเบียนแล้วจ้า", Toast.LENGTH_SHORT).show();
-                            loading.dismiss();
+                            reference = FirebaseDatabase.getInstance().getReference("Users").child(userid);
 
-                            // ---------------------------------- //
-                            // WHAT TO DO WHEN SIGN UP COMPLETELY //
-                            // ---------------------------------- //
+                            HashMap<String,String> hashmap = new HashMap<>();
+                            hashmap.put("id",userid);
+                            hashmap.put("username",username);
+                            hashmap.put("imageURL","default");
 
+                            reference.setValue(hashmap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful()){
+
+                                        loading.dismiss();
+
+                                        // -------------------- //
+                                        // GO TO MAIN MENU HERE //
+                                        // -------------------- //
+
+                                        Toast.makeText(RegisterActivity.this,"Done!",Toast.LENGTH_SHORT).show();
+
+
+                                    }
+                                }
+                            });
                         }
                         else{
                             loading.dismiss();

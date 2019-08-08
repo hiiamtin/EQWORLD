@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         btSignin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                myRef.setValue("Hello, World2!");
                 Intent intent = new Intent(MainActivity.this,LoginActivity.class);
                 startActivity(intent);
             }
