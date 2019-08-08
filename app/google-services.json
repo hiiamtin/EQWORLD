@@ -1,0 +1,93 @@
+{
+  "project_info": {
+    "project_number": "34452559215",
+    "firebase_url": "https://eq-world.firebaseio.com",
+    "project_id": "eq-world",
+    "storage_bucket": "eq-world.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:34452559215:android:bac1a02886c91430",
+        "android_client_info": {
+          "package_name": "com.eq.eq_world"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "34452559215-7qvj0ugk4idhtp6olrr8b4q6d00sud4c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.eq.eq_world",
+            "certificate_hash": "5160bafda3d0651d3a5b362a012f50db6fd2e22d"
+          }
+        },
+        {
+          "client_id": "34452559215-d3enf2kris42dq7dv13slf3cqneacq03.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDG_PcIgTERZveI--_XItBzFC4JWiphWMs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "34452559215-d3enf2kris42dq7dv13slf3cqneacq03.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:34452559215:android:9dd488bbb9c506d5",
+        "android_client_info": {
+          "package_name": "com.eq.eqworld"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "34452559215-3bqi5l42486tff7od8obakkvgb8fj2e2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.eq.eqworld",
+            "certificate_hash": "8ddb1c6a3e01d46ee5fb1ec1f4e96d5f1c4d701e"
+          }
+        },
+        {
+          "client_id": "34452559215-qoufbb2f8j6m5rap4k1514gk5ll81v6g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.eq.eqworld",
+            "certificate_hash": "5160bafda3d0651d3a5b362a012f50db6fd2e22d"
+          }
+        },
+        {
+          "client_id": "34452559215-d3enf2kris42dq7dv13slf3cqneacq03.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDG_PcIgTERZveI--_XItBzFC4JWiphWMs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "34452559215-d3enf2kris42dq7dv13slf3cqneacq03.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
