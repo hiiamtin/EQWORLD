@@ -1,4 +1,4 @@
-package com.eq.eqworld;
+package com.eq.eq_world;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.eq.eqworld", appContext.getPackageName());
+        assertEquals("com.eq.eq_world", appContext.getPackageName());
     }
 }

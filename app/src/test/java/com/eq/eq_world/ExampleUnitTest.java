@@ -1,4 +1,4 @@
-package com.eq.eqworld;
+package com.eq.eq_world;
 
 import org.junit.Test;
 
