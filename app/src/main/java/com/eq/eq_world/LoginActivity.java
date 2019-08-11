@@ -1,6 +1,7 @@
 package com.eq.eq_world;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -63,10 +64,12 @@ public class LoginActivity extends AppCompatActivity {
                                     if(task.isSuccessful()){
 
                                         loading.dismiss();
-                                        Toast.makeText(LoginActivity.this,"Success !", Toast.LENGTH_SHORT).show();
 
                                         // -------------------- //
                                         // GO TO MAIN MENU HERE //
+                                        Intent chatMenu = new Intent(LoginActivity.this,ChatListActivity.class);
+                                        startActivity(chatMenu);
+                                        finish();
                                         // -------------------- //
 
                                     }
