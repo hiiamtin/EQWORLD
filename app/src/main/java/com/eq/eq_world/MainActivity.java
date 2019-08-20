@@ -23,6 +23,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // if you wanna try Camp Home Activity5
+        // Delete -> //*
+        //* Intent intent = new Intent(this,CampHomeActivity.class);
+        //* startActivity(intent);
+
         autoLogin();
 
         btSignin = findViewById(R.id.btnSignIn);
@@ -48,11 +53,6 @@ public class MainActivity extends AppCompatActivity {
     public void autoLogin(){
         // HAVE LOGGED IN?
         // GO TO MAIN MENU AUTOMATICALLY
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        if(firebaseUser != null){
-            Intent chatMenu = new Intent(this,ChatListActivity.class);
-            startActivity(chatMenu);
-            finish();
-        }
+
     }
 }

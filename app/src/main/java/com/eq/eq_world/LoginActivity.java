@@ -67,9 +67,6 @@ public class LoginActivity extends AppCompatActivity {
 
                                         // -------------------- //
                                         // GO TO MAIN MENU HERE //
-                                        Intent chatMenu = new Intent(LoginActivity.this,ChatListActivity.class);
-                                        startActivity(chatMenu);
-                                        finish();
                                         // -------------------- //
 
                                     }

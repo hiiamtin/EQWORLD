@@ -20,6 +20,6 @@
         android:textSize="18sp"
         android:textColor="#000000"
         android:padding="8dp"
-        android:background="#FFFFFF"/>
+        android:background="@drawable/chatbg_left"/>
 
 </RelativeLayout>
