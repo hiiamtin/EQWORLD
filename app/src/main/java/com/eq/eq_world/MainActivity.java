@@ -14,7 +14,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 public class MainActivity extends AppCompatActivity {
-
+    Button btFaq;
     Button btSignin,btSignup;
     FirebaseUser firebaseUser;
 
@@ -48,6 +48,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        btFaq = findViewById(R.id.btnFaq);
+        btFaq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,FaqActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     public void autoLogin(){
@@ -55,4 +65,5 @@ public class MainActivity extends AppCompatActivity {
         // GO TO MAIN MENU AUTOMATICALLY
 
     }
+
 }
