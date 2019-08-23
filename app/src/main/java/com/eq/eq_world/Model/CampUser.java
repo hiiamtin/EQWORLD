@@ -4,6 +4,7 @@ public class CampUser {
     private String id;
     private String username;
     private String imageURL;
+    private String role;
 
     public CampUser(String id, String username, String imageURL) {
         this.id = id;
@@ -37,5 +38,13 @@ public class CampUser {
 
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

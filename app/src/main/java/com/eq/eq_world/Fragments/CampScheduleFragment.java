@@ -17,8 +17,6 @@ public class CampScheduleFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_camp_schedule,container,false);
 
-        //onCreate here
-
         return view;
     }
 
