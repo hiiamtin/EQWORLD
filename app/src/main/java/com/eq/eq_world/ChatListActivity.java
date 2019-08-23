@@ -18,6 +18,7 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.facebook.login.LoginManager;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -90,6 +91,7 @@ public class ChatListActivity extends AppCompatActivity {
                             // LOGOUT
                             case R.id.logout:
                                 FirebaseAuth.getInstance().signOut();
+                                LoginManager.getInstance().logOut();
                                 startActivity(new Intent(ChatListActivity.this,MainActivity.class));
                                 finish();
                                 return true;

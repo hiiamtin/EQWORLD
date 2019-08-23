@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -15,7 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btSignin,btSignup;
+    Button btSignin,btSignup,btnGoogle,btnFacebook;
     FirebaseUser firebaseUser;
 
     @Override
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this,LoginActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -40,9 +42,29 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this,RegisterActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
+        btnGoogle = (Button)findViewById(R.id.btnGoogle);
+        btnGoogle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, GoogleSignInActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        btnFacebook = (Button)findViewById(R.id.btnFacebook);
+        btnFacebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,FacebookLoginActivity.class );
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     public void autoLogin(){
@@ -50,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         // GO TO MAIN MENU AUTOMATICALLY
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if(firebaseUser != null){
-            Intent chatMenu = new Intent(this,ChatListActivity.class);
+            Intent chatMenu = new Intent(this,HomeActivity.class);
             startActivity(chatMenu);
             finish();
         }
