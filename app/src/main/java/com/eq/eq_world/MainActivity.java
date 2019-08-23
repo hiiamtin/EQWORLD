@@ -17,7 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 public class MainActivity extends AppCompatActivity {
-
+    Button btFaq;
     Button btSignin,btSignup,btnGoogle,btnFacebook;
     FirebaseUser firebaseUser;
 
@@ -25,6 +25,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // if you wanna try Camp Home Activity5
+        // Delete -> //*
+        //* Intent intent = new Intent(this,CampHomeActivity.class);
+        //* startActivity(intent);
 
         autoLogin();
 
@@ -45,6 +50,16 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this,RegisterActivity.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+
+
+        btFaq = findViewById(R.id.btnFaq);
+        btFaq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,FaqActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -81,4 +96,5 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
     }
+
 }

@@ -1,17 +1,17 @@
 package com.eq.eq_world.Model;
 
-public class ChatUser {
+public class CampUser {
     private String id;
     private String username;
     private String imageURL;
 
-    public ChatUser(String id, String username, String imageURL) {
+    public CampUser(String id, String username, String imageURL) {
         this.id = id;
         this.username = username;
         this.imageURL = imageURL;
     }
 
-    public ChatUser() {
+    public CampUser() {
 
     }
 
