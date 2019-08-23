@@ -3,6 +3,7 @@ package com.eq.eq_world;
 import androidx.annotation.NonNull;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,7 +23,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.auth.UserInfo;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
 
 
 public class GoogleSignInActivity extends BaseActivity implements
@@ -38,6 +43,10 @@ public class GoogleSignInActivity extends BaseActivity implements
     private GoogleSignInClient mGoogleSignInClient;
     private TextView mStatusTextView;
     private TextView mDetailTextView;
+    //db
+    private DatabaseReference reference;
+
+    String display_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,19 +92,19 @@ public class GoogleSignInActivity extends BaseActivity implements
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Toast.makeText(this,"try",Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,"try",Toast.LENGTH_SHORT).show();
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
-            Toast.makeText(this,"requestCode == RC_SIGN_IN",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "requestCode == RC_SIGN_IN", Toast.LENGTH_SHORT).show();
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
 
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = task.getResult(ApiException.class);
-                Toast.makeText(this,"firebaseAuthWithGoogle",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "firebaseAuthWithGoogle", Toast.LENGTH_SHORT).show();
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
-                Toast.makeText(this,"error"+e.toString(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "error" + e.toString(), Toast.LENGTH_SHORT).show();
                 // Google Sign In failed, update UI appropriately
                 Log.w(TAG, "Google sign in failed", e);
                 // [START_EXCLUDE]
@@ -108,7 +117,7 @@ public class GoogleSignInActivity extends BaseActivity implements
 
     // [START auth_with_google]
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
-        Toast.makeText(this,"try2",Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "try2", Toast.LENGTH_SHORT).show();
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
         // [START_EXCLUDE silent]
         showProgressDialog();
@@ -123,6 +132,10 @@ public class GoogleSignInActivity extends BaseActivity implements
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+
+                            getProviderData();
+                            saveToDB(user);
+
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
@@ -181,11 +194,11 @@ public class GoogleSignInActivity extends BaseActivity implements
             mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
 
             findViewById(R.id.signInButton).setVisibility(View.GONE);
-            findViewById(R.id.signOutAndDisconnect).setVisibility(View.VISIBLE);
+            //findViewById(R.id.signOutAndDisconnect).setVisibility(View.VISIBLE);
 
-            //Intent intent = new Intent(GoogleSignInActivity.this, HomeActivity.class);
-            //startActivity(intent);
-            //finish();
+            Intent intent = new Intent(GoogleSignInActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish();
         } else {
             mStatusTextView.setText(R.string.signed_out);
             mDetailTextView.setText(null);
@@ -206,5 +219,50 @@ public class GoogleSignInActivity extends BaseActivity implements
         /*else if (i == R.id.disconnectButton) {
             revokeAccess();
         }*/
+    }
+
+    private void saveToDB(FirebaseUser user) {
+        assert user != null;
+        String userID = user.getUid();
+
+        reference = FirebaseDatabase.getInstance().getReference("Users").child(userID);
+
+        HashMap<String, String> hashmap = new HashMap<>();
+        hashmap.put("id", userID);
+        hashmap.put("username", display_name);
+        hashmap.put("imageURL", "default");
+
+        reference.setValue(hashmap).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(getApplicationContext(), "Done!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    public void getProviderData() {
+
+        // [START get_provider_data]
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (user != null) {
+            for (UserInfo profile : user.getProviderData()) {
+
+                // Id of the provider (ex: google.com)
+                String providerId = profile.getProviderId();
+
+                // UID specific to the provider
+                String uid = profile.getUid();
+
+                // Name, email address, and profile photo Url
+                display_name = profile.getDisplayName();
+                String email = profile.getEmail();
+
+                Uri photoUrl = profile.getPhotoUrl();
+            }
+        }
+        // [END get_provider_data]
     }
 }

@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.facebook.AccessToken;
+import com.facebook.AccessTokenTracker;
 import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -66,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
     public void autoLogin(){
         // HAVE LOGGED IN?

@@ -110,12 +110,13 @@ public class RegisterActivity extends AppCompatActivity {
                                         // -------------------- //
 
                                         Toast.makeText(RegisterActivity.this,"Done!",Toast.LENGTH_SHORT).show();
-                                        Intent toLogin = new Intent(RegisterActivity.this,LoginActivity.class);
-                                        startActivity(toLogin);
-                                        finish();
                                     }
                                 }
                             });
+
+                            Intent toLogin = new Intent(RegisterActivity.this,LoginActivity.class);
+                            startActivity(toLogin);
+                            finish();
                         }
                         else{
                             loading.dismiss();
