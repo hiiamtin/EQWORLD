@@ -23,11 +23,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // if you wanna try Camp Home Activity5
-        // Delete -> //*
-        //* Intent intent = new Intent(this,CampHomeActivity.class);
-        //* startActivity(intent);
-
         autoLogin();
 
         btSignin = findViewById(R.id.btnSignIn);

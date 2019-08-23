@@ -1,10 +1,14 @@
 package com.eq.eq_world.Fragments;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,9 +22,11 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.eq.eq_world.Adapter.MessageAdapter;
+import com.eq.eq_world.GlobalStatus;
 import com.eq.eq_world.Model.CampUser;
 import com.eq.eq_world.Model.GroupAnnounce;
 import com.eq.eq_world.R;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -29,6 +35,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -46,9 +53,6 @@ public class CampAnnounceFragment extends Fragment {
 
     RecyclerView recyclerView;
 
-    Intent intent;
-
-    String imageURL;
 
 
     @Override
@@ -74,6 +78,7 @@ public class CampAnnounceFragment extends Fragment {
         final String temp_img = "default";
 
         readMessage(temp_campName);
+
 
         bt_send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,14 +106,21 @@ public class CampAnnounceFragment extends Fragment {
         hashMap.put("message",message);
         hashMap.put("image",image);
 
-        dbRef.child("Camps").child(camp).child("chats").push().setValue(hashMap);
+        if(GlobalStatus.isConnectedToNet(getContext())){
+            dbRef.child("Camps").child(camp).child("chats").push().setValue(hashMap);
+        }
+        else {
+            Snackbar.make(getView(),"โปรดตรวจสอบอินเตอร์เน็ต",Snackbar.LENGTH_SHORT).show();
+        }
+
 
     }
 
     private void readMessage(final String camp){
         mchat = new ArrayList<>();
 
-        reference = FirebaseDatabase.getInstance().getReference("Camps").child(camp).child("chats");
+        reference = FirebaseDatabase.getInstance().getReference("Camps")
+                .child(camp).child("chats");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -132,5 +144,7 @@ public class CampAnnounceFragment extends Fragment {
         });
 
     }
+
+
 
 }
