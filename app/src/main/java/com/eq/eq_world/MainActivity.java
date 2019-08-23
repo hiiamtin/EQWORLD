@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this,LoginActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -49,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this,RegisterActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -69,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, GoogleSignInActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -79,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this,FacebookLoginActivity.class );
                 startActivity(intent);
-                finish();
             }
         });
     }
@@ -93,7 +89,6 @@ public class MainActivity extends AppCompatActivity {
         if(firebaseUser != null){
             Intent chatMenu = new Intent(this,HomeActivity.class);
             startActivity(chatMenu);
-            finish();
         }
     }
 

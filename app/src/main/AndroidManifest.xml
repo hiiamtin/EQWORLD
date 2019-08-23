@@ -15,7 +15,6 @@
         <activity android:name=".GoogleSignInActivity" />
         <activity android:name=".FacebookLoginActivity" />
         <activity android:name=".BaseActivity" />
-        <activity android:name=".MessageActivity" />
         <activity android:name=".CampHomeActivity"></activity>
         <activity android:name=".FaqActivity" />
         <activity android:name=".RegisterActivity" />

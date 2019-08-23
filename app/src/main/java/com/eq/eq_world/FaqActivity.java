@@ -102,8 +102,7 @@ public class FaqActivity extends AppCompatActivity {
         btBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(FaqActivity.this,MainActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
 
