@@ -27,9 +27,11 @@ public class RegisterActivity extends AppCompatActivity {
 
     MaterialEditText username, email, password;
     Button btn_reg;
+
+    ProgressDialog loading;
+
     FirebaseAuth auth;
     DatabaseReference reference;
-    ProgressDialog loading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +69,12 @@ public class RegisterActivity extends AppCompatActivity {
                 else{
                     register(txt_username,txt_email,txt_password);
                 }
+                /*
+                //for something
+                if(TextUtils.isEmpty(txt_email)){
+                    username.setError("Required.");
+                }
+                */
             }
         });
     }
@@ -102,11 +110,13 @@ public class RegisterActivity extends AppCompatActivity {
                                         // -------------------- //
 
                                         Toast.makeText(RegisterActivity.this,"Done!",Toast.LENGTH_SHORT).show();
-
-
                                     }
                                 }
                             });
+
+                            Intent toLogin = new Intent(RegisterActivity.this,LoginActivity.class);
+                            startActivity(toLogin);
+                            finish();
                         }
                         else{
                             loading.dismiss();
