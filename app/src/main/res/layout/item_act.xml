@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp">
+
+
+    <RelativeLayout
+        android:id="@+id/actcontainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/card_bg_act"
+        android:paddingBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+
+            android:id="@+id/act_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
+            android:layout_marginTop="9dp"
+            android:text="CE SMART CAMP 12th"
+            android:textColor="#041D72"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/act_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/act_title"
+            android:layout_alignLeft="@id/act_title"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="8dp"
+            android:lineSpacingExtra="8dp"
+            android:text="ค่าย CE SMART CAMP 12 จัดโดยคณะวิศวกรรมศาสตร์ ภาควิชาวิศวกรรมคอมพิวเตอร์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง จัดขึ้นระหว่างวันที่ 31 พฤษภาคม-5 มิถุนายน 2562 (ค่ายพักค้างคืน 6 วัน 5 คืน)
+ภายในค่ายจะมีการจัดอบรมเชิงปฏิบัติการเพื่อเสริมสร้างความรู้ ให้แก่น้องๆนักเรียนในระดับชั้นมัธยมศึกษาตอนปลาย และแนะนำแนวทางในภาควิชาวิศวกรรมคอมพิวเตอร์ พร้อมกิจกรรมสนุกสนานจากพี่ๆ โดยจัดอบรมในเรื่อง Internet of Things (IoT)"
+            android:textColor="@color/content_text_color" />
+
+        <TextView
+            android:id="@+id/see_more_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/act_description"
+            android:layout_alignEnd="@id/act_description"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="6dp"
+            android:text="click for see more detail..." />
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

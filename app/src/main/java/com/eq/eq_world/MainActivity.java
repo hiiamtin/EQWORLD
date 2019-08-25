@@ -17,8 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 public class MainActivity extends AppCompatActivity {
-    Button btFaq;
-    Button btSignin,btSignup,btnGoogle,btnFacebook;
+    Button btSignin,btSignup,btnGoogle,btnFacebook,btFaq,btAct;
     FirebaseUser firebaseUser;
 
     @Override
@@ -46,6 +45,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btAct = findViewById(R.id.btnlistact);
+        btAct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,ListActActivity.class);
+                startActivity(intent);
+            }
+        });
 
         btFaq = findViewById(R.id.btnFaq);
         btFaq.setOnClickListener(new View.OnClickListener() {
