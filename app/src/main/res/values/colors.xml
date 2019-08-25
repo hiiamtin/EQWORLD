@@ -8,6 +8,10 @@
     <color name="title_text_color">#27278B</color>
     <color name="content_text_color">#000000</color>
 
+    //color for list activities
+    <color name="card_bg_list_act">#8AD1F1</color>
+    <color name="bg_list_act">#631CFF</color>
+
     <color name="white" >#ffffff</color>
     <color name="black" >#000000</color>
 
