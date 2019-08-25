@@ -43,6 +43,15 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        cChat = findViewById(R.id.chat);
+        cChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this,CampHomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void signOut(){

@@ -73,8 +73,9 @@ public class CampAnnounceFragment extends Fragment {
 
         //intent = getIntent();
         //Virtual User
+        fuser = FirebaseAuth.getInstance().getCurrentUser();
         final String temp_campName = "Camp name1";
-        final String temp_uid = "mxRcJeSdOTSaCPe3bRmbDxsI5Hv1";
+        final String temp_uid = fuser.getUid();
         final String temp_img = "default";
 
         readMessage(temp_campName);
