@@ -1,28 +1,24 @@
 package com.eq.eq_world.Fragments;
 
-
-import android.content.Context;
-import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.provider.ContactsContract;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Toast;
+
 
 import com.eq.eq_world.Adapter.MessageAdapter;
 import com.eq.eq_world.GlobalStatus;
+
 import com.eq.eq_world.Model.CampUser;
 import com.eq.eq_world.Model.GroupAnnounce;
 import com.eq.eq_world.R;
@@ -35,7 +31,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -76,7 +71,6 @@ public class CampAnnounceFragment extends Fragment {
         fuser = FirebaseAuth.getInstance().getCurrentUser();
         final String temp_campName = "Camp name1";
         final String temp_uid = fuser.getUid();
-        final String temp_img = "default";
 
         readMessage(temp_campName);
 
@@ -86,7 +80,7 @@ public class CampAnnounceFragment extends Fragment {
             public void onClick(View view) {
                 String msg = text_send.getText().toString();
                 if(!msg.equals("")){
-                    sendMessage(temp_uid,msg,temp_campName,temp_img);
+                    sendMessage(temp_uid,msg,temp_campName);
                 }
                 text_send.setText("");
 
@@ -99,13 +93,12 @@ public class CampAnnounceFragment extends Fragment {
         return view;
     }
 
-    private void sendMessage(String sender, String message, String camp, String image){
+    private void sendMessage(String sender, String message, String camp){
         DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference();
 
         HashMap<String,Object> hashMap = new HashMap<>();
         hashMap.put("sender",sender);
         hashMap.put("message",message);
-        hashMap.put("image",image);
 
         if(GlobalStatus.isConnectedToNet(getContext())){
             dbRef.child("Camps").child(camp).child("chats").push().setValue(hashMap);
@@ -120,23 +113,20 @@ public class CampAnnounceFragment extends Fragment {
     private void readMessage(final String camp){
         mchat = new ArrayList<>();
 
-        reference = FirebaseDatabase.getInstance().getReference("Camps")
-                .child(camp).child("chats");
+        reference = FirebaseDatabase.getInstance().getReference();
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mchat.clear();
-                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                for(DataSnapshot snapshot :
+                        dataSnapshot.child("Camps").child(camp).child("chats").getChildren()){
                     GroupAnnounce chat = snapshot.getValue(GroupAnnounce.class);
                     mchat.add(chat);
-
-                    String img = chat.getImage();
-
-
-                    messageAdapter = new MessageAdapter(getContext(),mchat,img);
+                    messageAdapter = new MessageAdapter(getContext(),mchat);
                     recyclerView.setAdapter(messageAdapter);
                 }
             }
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
