@@ -47,7 +47,7 @@ public class HomeActivity extends AppCompatActivity {
         cChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HomeActivity.this,CampHomeActivity.class);
+                Intent intent = new Intent(HomeActivity.this,CampListActivity.class);
                 startActivity(intent);
             }
         });

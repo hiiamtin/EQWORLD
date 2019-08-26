@@ -199,6 +199,7 @@ public class FacebookLoginActivity extends BaseActivity implements
 
             findViewById(R.id.buttonFacebookLogin).setVisibility(View.VISIBLE);
             findViewById(R.id.buttonFacebookSignout).setVisibility(View.GONE);
+            LoginManager.getInstance().logOut();
         }
     }
 

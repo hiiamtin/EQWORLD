@@ -130,7 +130,7 @@ public class CampAnnounceFragment extends Fragment {
                     GroupAnnounce chat = snapshot.getValue(GroupAnnounce.class);
                     mchat.add(chat);
 
-                    String img = chat.getImage();
+                    String img = "default";
 
 
                     messageAdapter = new MessageAdapter(getContext(),mchat,img);
