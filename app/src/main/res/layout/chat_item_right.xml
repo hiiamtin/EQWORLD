@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:padding="8dp"
+    android:padding="5dp"
     android:layout_height="wrap_content">
 
     <RelativeLayout
@@ -24,9 +24,27 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:id="@+id/show_message"
-            android:textSize="18sp"
+            android:textSize="17sp"
             android:textColor="#ffffff"
-            android:padding="8dp"/>
+            android:padding="7dp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/show_username"
+            android:visibility="gone"/>
+
+        <TextView
+            android:paddingRight="8dp"
+            android:layout_below="@+id/show_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/show_time"
+            android:textSize="10dp"
+            android:text="time"
+            android:textColor="#AAA"/>
 
     </RelativeLayout>
 

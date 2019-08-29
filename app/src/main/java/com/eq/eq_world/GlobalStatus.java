@@ -6,6 +6,9 @@ import android.net.NetworkInfo;
 
 
 public class GlobalStatus {
+
+    public static String currentUid, currentUsername, currentCamp, currentImg, myRoleInThisCamp="";
+
     public static boolean isConnectedToNet(Context context){
         ConnectivityManager connectivityManager =
                 (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -16,5 +19,11 @@ public class GlobalStatus {
             isConnect = (active != null)&&(active.isConnectedOrConnecting());
         }
         return isConnect;
+    }
+
+    public void clearAll(){
+        this.currentUid = "";
+        this.currentUsername = "";
+        this.currentCamp = "";
     }
 }

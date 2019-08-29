@@ -19,6 +19,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
@@ -34,6 +39,8 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         mAuth = FirebaseAuth.getInstance();
+
+        loadUserInfo(mAuth.getCurrentUser().getUid());
 
         logout = findViewById(R.id.out);
         logout.setOnClickListener(new View.OnClickListener() {
@@ -51,6 +58,7 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
     }
 
@@ -82,5 +90,22 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(goMain);
         finish();
 
+    }
+
+    private void loadUserInfo(String uid){
+        final DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("Users")
+                .child(uid);
+        dbRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                GlobalStatus.currentUsername = dataSnapshot.child("username").getValue(String.class);
+                GlobalStatus.currentImg = dataSnapshot.child("imageURL").getValue(String.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }

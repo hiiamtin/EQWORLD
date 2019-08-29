@@ -3,8 +3,7 @@ package com.eq.eq_world.Model;
 public class GroupAnnounce {
     private String sender;
     private String message;
-    private String timeStamp;
-    private String image;
+    private String time;
 
     public GroupAnnounce() {
     }
@@ -25,19 +24,11 @@ public class GroupAnnounce {
         this.message = message;
     }
 
-    public String getTimeStamp() {
-        return timeStamp;
+    public String getTime() {
+        return time;
     }
 
-    public void setTimeStamp(String timeStamp) {
-        this.timeStamp = timeStamp;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
+    public void setTime(String time) {
+        this.time = time;
     }
 }
