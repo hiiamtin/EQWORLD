@@ -19,6 +19,7 @@ import com.eq.eq_world.Fragments.CampScheduleFragment;
 import com.eq.eq_world.Fragments.CampSettingFragment;
 import com.eq.eq_world.Model.CampUser;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,12 +35,14 @@ public class CampHomeActivity extends AppCompatActivity {
     public static List<CampUser> memberList;
     ProgressDialog loadingBar;
     ImageButton bt_button;
+    String myUID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camp_home);
 
+        myUID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         // ui fragment config
         TabLayout tabLayout = findViewById(R.id.tab_layout);
@@ -78,8 +81,7 @@ public class CampHomeActivity extends AppCompatActivity {
         mUsers = new ArrayList<>();
         memberList = new ArrayList<>();
 
-
-        readMemberList("Camp name1");///
+        readMemberList("Camp name1");
 
     }
 
@@ -107,6 +109,9 @@ public class CampHomeActivity extends AppCompatActivity {
                             .getValue(CampUser.class);
                     member.setRole(uid[1]);
                     memberList.add(member);
+                    if(member.getId().equals(myUID)){
+                        GlobalStatus.myRoleInThisCamp = member.getRole();
+                    }
                 }
                 loadingBar.dismiss();
 

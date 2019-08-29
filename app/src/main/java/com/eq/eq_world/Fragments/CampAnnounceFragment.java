@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,10 +18,10 @@ import android.widget.ImageButton;
 import com.eq.eq_world.Adapter.MessageAdapter;
 import com.eq.eq_world.GlobalStatus;
 
-import com.eq.eq_world.Model.CampUser;
 import com.eq.eq_world.Model.GroupAnnounce;
 import com.eq.eq_world.R;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -30,7 +29,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.core.utilities.Clock;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -47,7 +48,6 @@ public class CampAnnounceFragment extends Fragment {
     List<GroupAnnounce> mchat;
 
     RecyclerView recyclerView;
-
 
 
     @Override
@@ -78,7 +78,7 @@ public class CampAnnounceFragment extends Fragment {
         bt_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String msg = text_send.getText().toString();
+                String msg = text_send.getText().toString().trim();
                 if(!msg.equals("")){
                     sendMessage(temp_uid,msg,temp_campName);
                 }
@@ -101,7 +101,8 @@ public class CampAnnounceFragment extends Fragment {
         hashMap.put("message",message);
 
         if(GlobalStatus.isConnectedToNet(getContext())){
-            dbRef.child("Camps").child(camp).child("chats").push().setValue(hashMap);
+            dbRef.child("Camps").child(camp).child("chats")
+                    .child(String.valueOf(System.currentTimeMillis())).setValue(hashMap);
         }
         else {
             Snackbar.make(getView(),"โปรดตรวจสอบอินเตอร์เน็ต",Snackbar.LENGTH_SHORT).show();
