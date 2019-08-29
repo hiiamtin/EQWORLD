@@ -20,6 +20,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHolder>{
@@ -65,6 +67,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
             Glide.with(mContext).load(member.getImageURL()).into(holder.profile_image);
         }
 
+        holder.show_time.setText(timestamp(chat.getTime()));
+
 
     }
 
@@ -77,6 +81,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         public TextView show_message;
         public TextView show_username;
         public ImageView profile_image;
+        public TextView show_time;
 
         public ViewHolder(View itemView){
             super(itemView);
@@ -84,6 +89,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
             show_message = itemView.findViewById(R.id.show_message);
             show_username = itemView.findViewById(R.id.show_username);
             profile_image = itemView.findViewById(R.id.profile_image);
+            show_time = itemView.findViewById(R.id.show_time);
         }
     }
 
@@ -105,6 +111,12 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
             }
         }
         return new CampUser("x","Unknown","default");
+    }
+
+    private String timestamp(String milli){
+        SimpleDateFormat formatter= new SimpleDateFormat("E - HH:mm");
+        Date date = new Date(Long.valueOf(milli));
+        return (formatter.format(date));
     }
 
 }

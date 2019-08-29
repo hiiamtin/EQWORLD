@@ -122,6 +122,7 @@ public class CampAnnounceFragment extends Fragment {
                 for(DataSnapshot snapshot :
                         dataSnapshot.child("Camps").child(camp).child("chats").getChildren()){
                     GroupAnnounce chat = snapshot.getValue(GroupAnnounce.class);
+                    chat.setTime(snapshot.getKey());
                     mchat.add(chat);
                     messageAdapter = new MessageAdapter(getContext(),mchat);
                     recyclerView.setAdapter(messageAdapter);
