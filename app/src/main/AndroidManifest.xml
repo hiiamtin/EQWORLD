@@ -3,6 +3,8 @@
     package="com.eq.eq_world">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -17,6 +19,8 @@
         <activity android:name=".BaseActivity" />
         <activity android:name=".CampHomeActivity"></activity>
         <activity android:name=".FaqActivity" />
+        <activity android:name=".SongActivity"/>
+        <activity android:name=".YoutubeConfig"/>
         <activity android:name=".ListActActivity"/>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
