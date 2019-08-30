@@ -42,8 +42,9 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:id="@+id/show_time"
-            android:textSize="10dp"
+            android:textSize="11dp"
             android:text="time"
+            android:textStyle="bold"
             android:textColor="#AAA"/>
 
     </RelativeLayout>

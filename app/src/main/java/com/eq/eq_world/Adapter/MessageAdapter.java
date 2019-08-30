@@ -113,9 +113,9 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         return new CampUser("x","Unknown","default");
     }
 
-    private String timestamp(String milli){
+    private String timestamp(long milli){
         SimpleDateFormat formatter= new SimpleDateFormat("E - HH:mm");
-        Date date = new Date(Long.valueOf(milli));
+        Date date = new Date(milli);
         return (formatter.format(date));
     }
 
