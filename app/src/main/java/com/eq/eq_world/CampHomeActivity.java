@@ -81,6 +81,7 @@ public class CampHomeActivity extends AppCompatActivity {
         mUsers = new ArrayList<>();
         memberList = new ArrayList<>();
 
+        // Runtime Parameter
         readMemberList("Camp name1");
 
     }
@@ -124,9 +125,6 @@ public class CampHomeActivity extends AppCompatActivity {
         });
 
     }
-
-
-
 
 
 }
