@@ -24,12 +24,29 @@
             app:srcCompat="@drawable/logo" />
 
         <RelativeLayout
+            android:id="@+id/rellay_welcome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/logo"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Welcome to EQ World"
+                android:textSize="30dp"
+                android:textColor="#ffffff"
+                android:paddingLeft="20dp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
             android:id="@+id/reLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/logo"
+            android:layout_below="@+id/rellay_welcome"
             android:visibility="gone"
-            android:layout_marginTop="100dp">
+            android:layout_marginTop="90dp">
 
             <RelativeLayout
                 android:id="@+id/reLayout1"
@@ -105,39 +122,5 @@
         </RelativeLayout>
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/rellay"
-        android:layout_centerInParent="true">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnFaq"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="FAQ"
-                android:visibility="visible"/>
-
-            <Button
-                android:id="@+id/btnlistact"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ListOfActivites"
-                android:visibility="visible"/>
-
-            <Button
-                android:id="@+id/btn_song"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Song"
-                android:visibility="visible"/>
-
-        </LinearLayout>
-    </RelativeLayout>
 
 </RelativeLayout>

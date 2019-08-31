@@ -25,7 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 public class MainActivity extends AppCompatActivity {
-    Button btSignin,btSignup,btFaq,btAct,btSong;
+    Button btSignin,btSignup;
     FirebaseUser firebaseUser;
 
     View view;
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void run() {
             layout1.setVisibility(View.VISIBLE);
-            //layout2.setVisibility(View.VISIBLE);
+            layout2.setVisibility(View.VISIBLE);
         }
     };
 
@@ -53,9 +53,9 @@ public class MainActivity extends AppCompatActivity {
         //Animation aniSlide = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.slide);
         //logoEQ.startAnimation(aniSlide);
         layout1 = findViewById(R.id.reLayout);
-        //layout2 = findViewById(R.id.reLayout2);
+        layout2 = findViewById(R.id.rellay_welcome);
 
-        handler.postDelayed(runnable,2500);
+        handler.postDelayed(runnable,1500);
         //view.setBackgroundResource(R.color.white);
 
         autoLogin();
@@ -92,33 +92,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, FacebookLoginActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        btAct = findViewById(R.id.btnlistact);
-        btAct.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ListActActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        btFaq = findViewById(R.id.btnFaq);
-        btFaq.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, FaqActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        btSong = findViewById(R.id.btn_song);
-        btSong.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, SongActivity.class);
                 startActivity(intent);
             }
         });

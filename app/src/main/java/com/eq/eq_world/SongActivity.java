@@ -60,7 +60,6 @@ public class SongActivity extends AppCompatActivity {
         sRecyclerview.setAdapter(sAdapter);
         sRecyclerview.setLayoutManager(new LinearLayoutManager(this));
 
-
         sSearchInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -70,10 +69,8 @@ public class SongActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-
                 sAdapter.getFilter().filter(s);
                 ssearch = s;
-
 
             }
 
