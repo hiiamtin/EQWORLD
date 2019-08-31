@@ -3,7 +3,7 @@ package com.eq.eq_world.Model;
 public class GroupAnnounce {
     private String sender;
     private String message;
-    private String time;
+    private long time;
 
     public GroupAnnounce() {
     }
@@ -24,11 +24,11 @@ public class GroupAnnounce {
         this.message = message;
     }
 
-    public String getTime() {
+    public long getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(long time) {
         this.time = time;
     }
 }

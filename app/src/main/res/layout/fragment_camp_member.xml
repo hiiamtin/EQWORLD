@@ -7,11 +7,92 @@
     android:background="#DBE0E4"
     tools:context=".Fragments.CampMemberFragment">
 
+    <Button
+        android:padding="5dp"
+        android:layout_height="32dp"
+        android:layout_width="match_parent"
+        android:text="+ เพิ่มสมาชิกใหม่"
+        android:textSize="14dp"
+        android:textColor="#000"
+        android:background="#30C9F7"
+        android:id="@+id/add_member"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/add_bar"
+        android:visibility="gone"
+        android:gravity="center_horizontal"
+        android:background="#30C9F7"
+        android:orientation="vertical">
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:id="@+id/txt_uid"
+            android:hint="กรอก ID 28 หลัก"
+            android:textColor="#000"
+            android:textSize="18dp"/>
+
+        <RadioGroup
+            android:layout_marginTop="15dp"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="ตำแหน่ง : "/>
+
+            <RadioButton android:id="@+id/radio_head"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Head"
+                android:textSize="18dp" />
+
+            <RadioButton android:id="@+id/radio_staff"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Staff"
+                android:textSize="18dp" />
+
+        </RadioGroup>
+
+        <Button
+            android:layout_marginTop="15dp"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:textColor="#000"
+            android:id="@+id/push_member"
+            android:text="เพิ่มสมาชิก"/>
+
+        <TextView
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:id="@+id/txt_complete"
+            android:text="สมาชิก01\nได้รับมอบหมายเป็น Head \nเรียบร้อยแล้ว"
+            android:visibility="gone"/>
+
+
+    </LinearLayout>
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
     </androidx.recyclerview.widget.RecyclerView>
+
 
 </LinearLayout>

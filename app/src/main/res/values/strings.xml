@@ -103,4 +103,9 @@
     <string name="email_fmt">Email: %s</string>
     <string name="title_activity_camp_list">CampListActivity</string>
 
+    //chung2
+    <string name="linktosite">
+        <a href="https://eq-world-0.flycricket.io/privacy.html">Privacy Policy</a>
+    </string>
+
 </resources>

@@ -1,6 +1,5 @@
 package com.eq.eq_world;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -17,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.eq.eq_world.Adapter.FaqAdapter;
-import com.eq.eq_world.Adapter.FaqItem;
+import com.eq.eq_world.Model.FaqItem;
 
 import java.util.ArrayList;
 import java.util.List;

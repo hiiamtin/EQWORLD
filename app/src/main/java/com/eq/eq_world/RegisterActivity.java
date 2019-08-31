@@ -5,8 +5,10 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -33,6 +35,8 @@ public class RegisterActivity extends AppCompatActivity {
     FirebaseAuth auth;
     DatabaseReference reference;
 
+    TextView loginTxt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,9 +52,19 @@ public class RegisterActivity extends AppCompatActivity {
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         btn_reg = findViewById(R.id.btn_reg);
+        loginTxt = (TextView) findViewById(R.id.login_text);
 
         // Firebase Config
         auth = FirebaseAuth.getInstance();
+
+        loginTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent toLogin = new Intent(RegisterActivity.this,LoginActivity.class);
+                startActivity(toLogin);
+                finish();
+            }
+        });
 
         btn_reg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,7 +127,6 @@ public class RegisterActivity extends AppCompatActivity {
                                     }
                                 }
                             });
-
                             Intent toLogin = new Intent(RegisterActivity.this,LoginActivity.class);
                             startActivity(toLogin);
                             finish();
