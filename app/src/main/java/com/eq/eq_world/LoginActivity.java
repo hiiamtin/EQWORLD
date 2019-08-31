@@ -1,24 +1,18 @@
 package com.eq.eq_world;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -50,7 +44,7 @@ public class LoginActivity extends BaseActivity implements
         mEmailField = findViewById(R.id.email);
         mPasswordField = findViewById(R.id.password);
         linkPolicy = (TextView) findViewById(R.id.link);
-        registerTxt = (TextView) findViewById(R.id.register_txt);
+        registerTxt = (TextView) findViewById(R.id.register_text);
 
         // Buttons
         findViewById(R.id.btn_login).setOnClickListener(this);
@@ -71,7 +65,6 @@ public class LoginActivity extends BaseActivity implements
                 finish();
             }
         });
-
 
     }
 

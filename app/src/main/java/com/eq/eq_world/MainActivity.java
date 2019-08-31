@@ -78,24 +78,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btAct = findViewById(R.id.btnlistact);
-        btAct.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ListActActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        btFaq = findViewById(R.id.btnFaq);
-        btFaq.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, FaqActivity.class);
-                startActivity(intent);
-            }
-        });
-
         btnGoogle = (ImageButton) findViewById(R.id.btnGoogle);
         btnGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,6 +92,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, FacebookLoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btAct = findViewById(R.id.btnlistact);
+        btAct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ListActActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btFaq = findViewById(R.id.btnFaq);
+        btFaq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, FaqActivity.class);
                 startActivity(intent);
             }
         });
