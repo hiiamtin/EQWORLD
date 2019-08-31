@@ -4,11 +4,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class Camp {
-    private String creator;
+    private String campID;
+    private String passWord;
     private String name;
     private String date;
-    private String campID;
     private String location;
+    private String image;
+    private String creator;
 
     private final DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Camps");
 
@@ -16,12 +18,16 @@ public class Camp {
         this.campID = campID;
     }
 
-    public String getCreator() {
-        return creator;
+    public String getCampID() {
+        return campID;
     }
 
-    public void setCreator(String creator) {
-        this.creator = creator;
+    public String getPassWord() {
+        return passWord;
+    }
+
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
     }
 
     public String getName() {
@@ -30,7 +36,7 @@ public class Camp {
 
     public void setName(String name) {
         this.name = name;
-        ref.child(getCampID()).child("name").setValue(this.name);
+        //ref.child(getCampID()).child("name").setValue(this.name);
     }
 
     public String getDate() {
@@ -39,15 +45,7 @@ public class Camp {
 
     public void setDate(String date) {
         this.date = date;
-        ref.child(getCampID()).child("date").setValue(this.date);
-    }
-
-    public String getCampID() {
-        return campID;
-    }
-
-    public void setCampID(String campID) {
-        this.campID = campID;
+        //ref.child(getCampID()).child("date").setValue(this.date);
     }
 
     public String getLocation() {
@@ -56,7 +54,27 @@ public class Camp {
 
     public void setLocation(String location) {
         this.location = location;
-        ref.child(getCampID()).child("location").setValue(this.location);
+        //ref.child(getCampID()).child("location").setValue(this.location);
+    }
+
+    public void setCampID(String campID) {
+        this.campID = campID;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getCreator() {
+        return creator;
+    }
+
+    public void setCreator(String creator) {
+        this.creator = creator;
     }
 
     public void assignRole(String uID, String role){
