@@ -120,7 +120,7 @@ public class CampAnnounceFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mchat.clear();
                 for(DataSnapshot snapshot :
-                        dataSnapshot.child("Camps").child(camp).child("chats").getChildren()){
+                        dataSnapshot.child("Camps").child("Camp name1").child("chats").getChildren()){
                     GroupAnnounce chat = snapshot.getValue(GroupAnnounce.class);
                     chat.setTime(snapshot.getKey());
                     mchat.add(chat);

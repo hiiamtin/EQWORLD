@@ -88,9 +88,9 @@ public class CampListActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.camp_recyclerview);
         //recyclerView.setHasFixedSize(true);
         campList = new ArrayList<>();
-        Camp camp = new Camp("Camp name2");
-        camp.setName("Camp name1");
-        camp.setDate("10 สิงหา");
+        Camp camp = new Camp("Camp name");
+        camp.setName("Camp name");
+        camp.setDate("เวลา:");
         campList.add(camp);
         campAdapter = new CampAdapter(this,campList);
         recyclerView.setAdapter(campAdapter);
