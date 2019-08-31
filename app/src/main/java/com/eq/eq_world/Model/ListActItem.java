@@ -1,15 +1,17 @@
-package com.eq.eq_world.Adapter;
+package com.eq.eq_world.Model;
+
 
 public class ListActItem {
 
-    String Title,Content,Type,Number,Description;
+    String Title,Content,Type,Number,Description,Linkyoutube;
 
-    public ListActItem(String title, String content, String type, String number, String description) {
+    public ListActItem(String title, String content, String type, String number, String description , String linkyoutube) {
         Title = title;
         Content = content;
         Type = type;
         Number = number;
         Description = description;
+        Linkyoutube = linkyoutube;
     }
 
     public String getTitle() {
@@ -50,5 +52,13 @@ public class ListActItem {
 
     public void setDescription(String description) {
         Description = description;
+    }
+
+    public String getLinkyoutube() {
+        return Linkyoutube;
+    }
+
+    public void setLinkyoutube(String linkyoutube) {
+        Linkyoutube = linkyoutube;
     }
 }

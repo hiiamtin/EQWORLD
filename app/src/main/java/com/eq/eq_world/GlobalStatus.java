@@ -5,6 +5,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 
+
+
 public class GlobalStatus {
 
     public static String currentUid, currentUsername, currentCamp, currentImg, myRoleInThisCamp="";
@@ -26,4 +28,5 @@ public class GlobalStatus {
         this.currentUsername = "";
         this.currentCamp = "";
     }
+
 }

@@ -2,6 +2,7 @@ package com.eq.eq_world;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Animatable;
 import android.os.Bundle;
@@ -24,7 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 public class MainActivity extends AppCompatActivity {
-    Button btSignin,btSignup,btFaq,btAct;
+    Button btSignin,btSignup,btnGoogle,btnFacebook,btFaq,btAct,btSong;
     FirebaseUser firebaseUser;
 
     View view;
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         btSignin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
@@ -72,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         btSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,RegisterActivity.class);
+                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
                 startActivity(intent);
             }
         });
@@ -81,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         btAct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,ListActActivity.class);
+                Intent intent = new Intent(MainActivity.this, ListActActivity.class);
                 startActivity(intent);
             }
         });
@@ -90,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         btFaq.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,FaqActivity.class);
+                Intent intent = new Intent(MainActivity.this, FaqActivity.class);
                 startActivity(intent);
             }
         });
@@ -108,10 +109,21 @@ public class MainActivity extends AppCompatActivity {
         btnFacebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,FacebookLoginActivity.class );
+                Intent intent = new Intent(MainActivity.this, FacebookLoginActivity.class);
                 startActivity(intent);
             }
         });
+
+        btSong = findViewById(R.id.btn_song);
+        btSong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, SongActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
     public void autoLogin(){

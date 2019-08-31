@@ -1,4 +1,4 @@
-package com.eq.eq_world.Adapter;
+package com.eq.eq_world.Model;
 
 public class FaqItem {
 

@@ -28,6 +28,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.core.utilities.Clock;
 
@@ -48,6 +49,8 @@ public class CampAnnounceFragment extends Fragment {
     List<GroupAnnounce> mchat;
 
     RecyclerView recyclerView;
+
+    double serverTime;
 
 
     @Override
@@ -80,10 +83,15 @@ public class CampAnnounceFragment extends Fragment {
             public void onClick(View view) {
                 String msg = text_send.getText().toString().trim();
                 if(!msg.equals("")){
-                    sendMessage(temp_uid,msg,temp_campName);
+                    if(GlobalStatus.isConnectedToNet(getContext())) {
+                        sendMessage(temp_uid, msg, temp_campName);
+                        text_send.setText("");
+                    }
+                    else{
+                        Snackbar.make(getView(),"โปรดตรวจสอบการเชื่อมต่ออินเตอร์เน็ต",Snackbar.LENGTH_LONG).show();
+                    }
                 }
-                text_send.setText("");
-
+                else text_send.setText("");
             }
         });
 
@@ -99,16 +107,9 @@ public class CampAnnounceFragment extends Fragment {
         HashMap<String,Object> hashMap = new HashMap<>();
         hashMap.put("sender",sender);
         hashMap.put("message",message);
+        hashMap.put("time",ServerValue.TIMESTAMP);
 
-        if(GlobalStatus.isConnectedToNet(getContext())){
-            dbRef.child("Camps").child(camp).child("chats")
-                    .child(String.valueOf(System.currentTimeMillis())).setValue(hashMap);
-        }
-        else {
-            Snackbar.make(getView(),"โปรดตรวจสอบอินเตอร์เน็ต",Snackbar.LENGTH_SHORT).show();
-        }
-
-
+        dbRef.child("Camps").child(camp).child("chats").push().setValue(hashMap);
     }
 
     private void readMessage(final String camp){
@@ -122,11 +123,11 @@ public class CampAnnounceFragment extends Fragment {
                 for(DataSnapshot snapshot :
                         dataSnapshot.child("Camps").child(camp).child("chats").getChildren()){
                     GroupAnnounce chat = snapshot.getValue(GroupAnnounce.class);
-                    chat.setTime(snapshot.getKey());
                     mchat.add(chat);
                     messageAdapter = new MessageAdapter(getContext(),mchat);
                     recyclerView.setAdapter(messageAdapter);
                 }
+
             }
 
 
