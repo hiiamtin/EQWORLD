@@ -8,6 +8,7 @@
     tools:context=".MainActivity">
 
     <RelativeLayout
+        android:id="@+id/rellay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -52,29 +53,6 @@
                         android:textColor="@color/bgBtnSignUp"
                         android:textAllCaps="true"/>
 
-    <Button
-        android:id="@+id/btnlistact"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="5dp"
-        android:text="ListOfActivites"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btn_song"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="165dp"
-        android:layout_marginTop="210dp"
-        android:layout_marginEnd="158dp"
-        android:layout_marginBottom="83dp"
-        android:text="Song"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSignUp" />
                     <Button
                         android:id="@+id/btnSignUp"
                         android:layout_width="wrap_content"
@@ -87,9 +65,7 @@
                         android:textColor="@color/bgBtnLogIn"
                         android:textAllCaps="true"/>
 
-
                 </LinearLayout>
-
             </RelativeLayout>
 
             <RelativeLayout
@@ -126,30 +102,42 @@
                     app:srcCompat="@drawable/googleg_standard_color_18" />
 
             </RelativeLayout>
-
-
         </RelativeLayout>
-
-        <Button
-            android:id="@+id/btnFaq"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="5dp"
-            android:text="FAQ"
-            android:visibility="gone"/>
-
-        <Button
-            android:id="@+id/btnlistact"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="5dp"
-            android:text="ListOfActivites"
-            android:visibility="gone"/>
-
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rellay"
+        android:layout_centerInParent="true">
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnFaq"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FAQ"
+                android:visibility="visible"/>
+
+            <Button
+                android:id="@+id/btnlistact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ListOfActivites"
+                android:visibility="visible"/>
+
+            <Button
+                android:id="@+id/btn_song"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Song"
+                android:visibility="visible"/>
+
+        </LinearLayout>
+    </RelativeLayout>
 
 </RelativeLayout>

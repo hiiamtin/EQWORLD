@@ -25,7 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 public class MainActivity extends AppCompatActivity {
-    Button btSignin,btSignup,btnGoogle,btnFacebook,btFaq,btAct,btSong;
+    Button btSignin,btSignup,btFaq,btAct,btSong;
     FirebaseUser firebaseUser;
 
     View view;
@@ -122,7 +122,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
 
     }
 
