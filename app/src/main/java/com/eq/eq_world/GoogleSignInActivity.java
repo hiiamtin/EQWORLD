@@ -106,7 +106,6 @@ public class GoogleSignInActivity extends BaseActivity implements
 
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = task.getResult(ApiException.class);
-                Toast.makeText(this, "firebaseAuthWithGoogle", Toast.LENGTH_SHORT).show();
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
                 Toast.makeText(this, "error" + e.toString(), Toast.LENGTH_SHORT).show();
@@ -236,12 +235,13 @@ public class GoogleSignInActivity extends BaseActivity implements
         hashmap.put("id", userID);
         hashmap.put("username", display_name);
         hashmap.put("imageURL", "default");
+        hashmap.put("role","S");
 
         reference.setValue(hashmap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
-                    Toast.makeText(getApplicationContext(), "Done!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Success!", Toast.LENGTH_SHORT).show();
                 }
             }
         });

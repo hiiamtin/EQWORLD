@@ -3,8 +3,8 @@
     package="com.eq.eq_world">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <supports-screens
         android:largeScreens="false"
@@ -23,20 +23,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".CampCreateActivity"></activity>
         <activity android:name=".HomeActivity" />
         <activity
             android:name=".CampListActivity"
             android:label="@string/title_activity_camp_list"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".GoogleSignInActivity" />
         <activity android:name=".FacebookLoginActivity" />
         <activity android:name=".BaseActivity" />
         <activity android:name=".CampHomeActivity" />
         <activity android:name=".FaqActivity" />
-        <activity android:name=".SongActivity"/>
-        <activity android:name=".YoutubeConfig"/>
-        <activity android:name=".ListActActivity"/>
+        <activity android:name=".SongActivity" />
+        <activity android:name=".YoutubeConfig" />
+        <activity android:name=".ListActActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">

@@ -9,7 +9,7 @@ import android.net.NetworkInfo;
 
 public class GlobalStatus {
 
-    public static String currentUid, currentUsername, currentCamp, currentImg, myRoleInThisCamp="";
+    public static String currentUid, currentUsername, currentCamp, currentImg, myRoleInThisCamp="",myRole="";
 
     public static boolean isConnectedToNet(Context context){
         ConnectivityManager connectivityManager =

@@ -39,7 +39,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         mAuth = FirebaseAuth.getInstance();
-
+        GlobalStatus.currentUid = mAuth.getCurrentUser().getUid();
         loadUserInfo(mAuth.getCurrentUser().getUid());
 
         logout = findViewById(R.id.out);
@@ -127,6 +127,7 @@ public class HomeActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 GlobalStatus.currentUsername = dataSnapshot.child("username").getValue(String.class);
                 GlobalStatus.currentImg = dataSnapshot.child("imageURL").getValue(String.class);
+                GlobalStatus.myRole = dataSnapshot.child("role").getValue(String.class);
             }
 
             @Override

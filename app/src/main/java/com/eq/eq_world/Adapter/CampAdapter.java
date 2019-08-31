@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.eq.eq_world.CampHomeActivity;
+import com.eq.eq_world.GlobalStatus;
 import com.eq.eq_world.Model.Camp;
 import com.eq.eq_world.R;
 
@@ -56,7 +57,9 @@ public class CampAdapter extends RecyclerView.Adapter<CampAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.title.setText(campList.get(position).getName());
-        holder.descriptions.setText(campList.get(position).getDate());
+        holder.time.setText(campList.get(position).getDate());
+        holder.location.setText(campList.get(position).getLocation());
+        holder.descriptions.setText(campList.get(position).getDetail());
     }
 
     @Override
@@ -65,13 +68,15 @@ public class CampAdapter extends RecyclerView.Adapter<CampAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        public TextView title,descriptions;
+        public TextView title,time,location,descriptions;
         public RelativeLayout relative_laout;
 
         public ViewHolder(View itemView){
             super(itemView);
 
             title = itemView.findViewById(R.id.item_camp_title);
+            time = itemView.findViewById(R.id.item_camp_time);
+            location = itemView.findViewById(R.id.item_camp_location);
             descriptions = itemView.findViewById(R.id.item_camp_description);
             relative_laout = itemView.findViewById(R.id.item_camp_relativelayout);
         }
@@ -88,15 +93,26 @@ public class CampAdapter extends RecyclerView.Adapter<CampAdapter.ViewHolder> {
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                boolean access = false;
                 m_Text = input.getText().toString();
                 String password = campList.get(viewHolder.getAdapterPosition()).getPassWord();
                 if(0==password.compareTo(m_Text)){
                     campid = campList.get(viewHolder.getAdapterPosition()).getCampID();
-                    Intent intent = new Intent(context, CampHomeActivity.class);
-                    context.startActivity(intent);
+                    for (String s: campList.get(viewHolder.getAdapterPosition()).getMembers()) {
+                        if(GlobalStatus.currentUid.equals(s)){
+                            access = true;
+                            break;
+                        }
+                    }
+                    if (access){
+                        Intent intent = new Intent(context, CampHomeActivity.class);
+                        context.startActivity(intent);
+                    }else{
+                        Toast.makeText(context,"you don't have permission to access!\n"+GlobalStatus.currentUid+"\n"+campList.get(viewHolder.getAdapterPosition()).getMembers(),Toast.LENGTH_SHORT).show();
+                    }
                 }
                 else{
-                    Toast.makeText(context,"Password worng",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context,"Password wrong",Toast.LENGTH_SHORT).show();
                 }
             }
         });

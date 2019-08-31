@@ -20,6 +20,7 @@ import android.widget.RadioButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.eq.eq_world.Adapter.CampAdapter;
 import com.eq.eq_world.Adapter.MemberAdapter;
 import com.eq.eq_world.CampHomeActivity;
 import com.eq.eq_world.GlobalStatus;
@@ -68,7 +69,7 @@ public class CampMemberFragment extends Fragment {
         push_member.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addMemberToCamp(txt_uid.getText().toString(),"Camp name1");
+                addMemberToCamp(txt_uid.getText().toString(), CampAdapter.campid);
 
             }
         });
