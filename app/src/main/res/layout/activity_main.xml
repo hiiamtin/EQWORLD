@@ -1,88 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#70A8C3"
     tools:context=".MainActivity">
 
-
-    <Button
-        android:id="@+id/btnSignIn"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="sign in"
-        app:layout_constraintBottom_toTopOf="@+id/btnGoogle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.967" />
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp">
 
-    <Button
-        android:id="@+id/btnSignUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="sign up"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/logo" />
 
-    <Button
-        android:id="@+id/btnFaq"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="5dp"
-        android:text="FAQ"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <RelativeLayout
+            android:id="@+id/reLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/logo"
+            android:visibility="gone"
+            android:layout_marginTop="100dp">
 
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.956" />
+            <RelativeLayout
+                android:id="@+id/reLayout1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/btnFacebook"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="28dp"
-        android:text="sign in w/facebook"
-        app:layout_constraintBottom_toTopOf="@+id/btnSignUp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
 
-    <Button
-        android:id="@+id/btnGoogle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="20dp"
-        android:text="sign in w/google"
-        app:layout_constraintBottom_toTopOf="@+id/btnFacebook"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+                    <Button
+                        android:id="@+id/btnSignIn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/btnlogin_bg"
+                        android:paddingLeft="101dp"
+                        android:paddingRight="101dp"
+                        android:text="sign in"
+                        android:textColor="@color/bgBtnSignUp"
+                        android:textAllCaps="true"/>
 
-    <Button
-        android:id="@+id/btnlistact"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="5dp"
-        android:text="ListOfActivites"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+                    <Button
+                        android:id="@+id/btnSignUp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:background="@drawable/btnsignup_bg"
+                        android:paddingLeft="100dp"
+                        android:paddingRight="100dp"
+                        android:text="sign up"
+                        android:textColor="@color/bgBtnLogIn"
+                        android:textAllCaps="true"/>
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/reLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_below="@+id/reLayout1"
+                android:layout_marginTop="40dp">
+
+                <ImageButton
+                    android:id="@+id/btnFacebook"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/btnGoogle"
+                    android:layout_marginLeft="30dp"
+                    android:paddingRight="25dp"
+                    android:paddingLeft="25dp"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:background="@color/white"
+                    app:srcCompat="@drawable/com_facebook_favicon_blue" />
+
+                <ImageButton
+                    android:id="@+id/btnGoogle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="25dp"
+                    android:paddingLeft="25dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:background="@color/white"
+                    app:srcCompat="@drawable/googleg_standard_color_18" />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btnFaq"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="5dp"
+            android:text="FAQ"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/btnlistact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="5dp"
+            android:text="ListOfActivites"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

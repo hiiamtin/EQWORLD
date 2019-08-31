@@ -4,6 +4,16 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <supports-screens
+        android:largeScreens="false"
+        android:largestWidthLimitDp="840"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true"
+        android:xlargeScreens="false" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,13 +21,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".HomeActivity" />
         <activity android:name=".GoogleSignInActivity" />
         <activity android:name=".FacebookLoginActivity" />
         <activity android:name=".BaseActivity" />
-        <activity android:name=".CampHomeActivity"></activity>
+        <activity android:name=".CampHomeActivity" />
         <activity android:name=".FaqActivity" />
-        <activity android:name=".ListActActivity"/>
+        <activity android:name=".ListActActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">
@@ -49,7 +59,5 @@
             </intent-filter>
         </activity>
     </application>
-
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>

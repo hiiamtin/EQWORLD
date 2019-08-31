@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -38,6 +39,8 @@ public class LoginActivity extends BaseActivity implements
     private FirebaseAuth mAuth;
     // [END declare_auth]
 
+    private TextView linkPolicy,registerTxt;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +49,8 @@ public class LoginActivity extends BaseActivity implements
         //Views
         mEmailField = findViewById(R.id.email);
         mPasswordField = findViewById(R.id.password);
+        linkPolicy = (TextView) findViewById(R.id.link);
+        registerTxt = (TextView) findViewById(R.id.register_txt);
 
         // Buttons
         findViewById(R.id.btn_login).setOnClickListener(this);
@@ -55,6 +60,19 @@ public class LoginActivity extends BaseActivity implements
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
         // [END initialize_auth]
+
+        linkPolicy.setMovementMethod(LinkMovementMethod.getInstance());
+
+        registerTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goRegister = new Intent(getApplicationContext(),RegisterActivity.class);
+                startActivity(goRegister);
+                finish();
+            }
+        });
+
+
     }
 
     // [START on_start_check_user]
@@ -167,7 +185,7 @@ public class LoginActivity extends BaseActivity implements
         hideProgressDialog();
         if (user != null) {
 
-            findViewById(R.id.TVlogin).setVisibility(View.GONE);
+            //findViewById(R.id.TVlogin).setVisibility(View.GONE);
             findViewById(R.id.email).setVisibility(View.GONE);
             findViewById(R.id.password).setVisibility(View.GONE);
             findViewById(R.id.btn_login).setVisibility(View.GONE);
@@ -176,7 +194,6 @@ public class LoginActivity extends BaseActivity implements
             //findViewById(R.id.verifyEmailButton).setEnabled(!user.isEmailVerified());
 
             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-            intent.putExtra("PL","email");
 
             startActivity(intent);
             finish();

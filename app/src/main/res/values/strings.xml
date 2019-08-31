@@ -4,7 +4,8 @@
     //<!-- TODO: Remove or change this placeholder text -->
     //
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    //<string name="server_client_id">34452559215-uva27tj78bn48fjqnkt8tsnh0rksmcje.apps.googleusercontent.com</string>
+    //
+    <string name="server_client_id">34452559215-uva27tj78bn48fjqnkt8tsnh0rksmcje.apps.googleusercontent.com</string>
 
     //chung
     <string name="facebook_app_id">382573855776414</string>
@@ -100,5 +101,10 @@
 
     <string name="id_fmt">User ID: %s</string>
     <string name="email_fmt">Email: %s</string>
+
+    //chung2
+    <string name="linktosite">
+        <a href="https://eq-world-0.flycricket.io/privacy.html">Privacy Policy</a>
+    </string>
 
 </resources>
