@@ -115,7 +115,6 @@ public class CampHomeActivity extends AppCompatActivity {
                     }
                 }
                 loadingBar.dismiss();
-
             }
 
             @Override

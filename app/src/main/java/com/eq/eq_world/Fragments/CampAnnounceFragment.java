@@ -50,8 +50,6 @@ public class CampAnnounceFragment extends Fragment {
 
     RecyclerView recyclerView;
 
-    double serverTime;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
