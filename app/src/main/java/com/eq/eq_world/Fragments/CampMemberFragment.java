@@ -1,8 +1,6 @@
 package com.eq.eq_world.Fragments;
 
 
-import android.app.AlertDialog;
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -19,6 +17,7 @@ import android.widget.RadioGroup;
 import android.widget.RadioButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.eq.eq_world.Adapter.CampAdapter;
 import com.eq.eq_world.Adapter.MemberAdapter;
@@ -29,8 +28,6 @@ import com.eq.eq_world.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.HashMap;
-
 
 public class CampMemberFragment extends Fragment {
 
@@ -39,7 +36,7 @@ public class CampMemberFragment extends Fragment {
     private Button bt_addMember, push_member;
     private LinearLayout add_bar;
     private boolean click;
-    private RadioButton r_head;
+    private RadioButton r_head, r_staff;
     private EditText txt_uid;
     private TextView txt_complete;
 
@@ -54,14 +51,15 @@ public class CampMemberFragment extends Fragment {
         bt_addMember = view.findViewById(R.id.add_member);
         add_bar = view.findViewById(R.id.add_bar);
         click = false;
-        if(GlobalStatus.myRoleInThisCamp.equals("S")){
-            bt_addMember.setVisibility(View.GONE);
+        if(GlobalStatus.myRoleInThisCamp.equals("A")||GlobalStatus.myRoleInThisCamp.equals("H")){
+            bt_addMember.setVisibility(View.VISIBLE);
         }
         toggleButton();
 
 
         // adding member
         r_head = view.findViewById(R.id.radio_head);
+        r_staff = view.findViewById(R.id.radio_staff);
         push_member = view.findViewById(R.id.push_member);
         txt_uid = view.findViewById(R.id.txt_uid);
         txt_complete = view.findViewById(R.id.txt_complete);
@@ -69,7 +67,12 @@ public class CampMemberFragment extends Fragment {
         push_member.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addMemberToCamp(txt_uid.getText().toString(), CampAdapter.campid);
+                if(txt_uid.getText().toString().trim().length()==28){
+                    addMemberToCamp(txt_uid.getText().toString(), CampAdapter.campid);
+                }
+                else {
+                    Toast.makeText(view.getContext(),"โปรดตรวจสอบ ID", Toast.LENGTH_LONG).show();
+                }
 
             }
         });
@@ -108,16 +111,21 @@ public class CampMemberFragment extends Fragment {
     @NonNull
     private String selectedRole(){
         if(r_head.isChecked()) return "H";
-        else return "S";
+        else if(r_staff.isChecked()) return "S";
+        else return "X";
     }
 
     private void addMemberToCamp(String id, String camp){
         DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("Camps")
                 .child(camp).child("members");
-        dbRef.child(id).setValue(selectedRole());
-
-        txt_complete.setText("เพิ่มสมาชิกสำเร็จ");
-        txt_complete.setVisibility(View.VISIBLE);
+        if(selectedRole().equals("X")){
+            Toast.makeText(getContext(),"โปรดเลือกตำแหน่ง", Toast.LENGTH_LONG).show();
+        }
+        else {
+            dbRef.child(id).setValue(selectedRole());
+            txt_complete.setText("เพิ่มสมาชิกสำเร็จ");
+            txt_complete.setVisibility(View.VISIBLE);
+        }
 
     }
 
