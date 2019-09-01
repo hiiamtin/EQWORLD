@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
@@ -12,9 +13,35 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
+        android:background="#f5f4e0"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
+        <ImageView
+            android:id="@+id/logo"
+            style="@style/ThemeOverlay.FirebaseIcon"
+            android:layout_width="321dp"
+            android:layout_height="208dp"
+            app:srcCompat="@drawable/logo" />
+
+        <TextView
+            android:id="@+id/welcome"
+            style="@style/ThemeOverlay.MyTextDetail"
+            android:text="Welcome to EQ World"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/description"
+            style="@style/ThemeOverlay.MyTextDetail"
+            android:text="This is facebook login page.\nPlease read our privacy policy from this link"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/link"
+            style="@style/ThemeOverlay.MyTextDetail"
+            android:text="@string/linktosite"/>
+
+        <!--
         <ImageView
             android:id="@+id/icon"
             style="@style/ThemeOverlay.FirebaseIcon"
@@ -40,6 +67,7 @@
             android:id="@+id/detail"
             style="@style/ThemeOverlay.MyTextDetail"
             tools:text="Firebase User ID: 123456789abc" />
+        -->
 
     </LinearLayout>
 
@@ -47,7 +75,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/grey_300">
+        android:background="#b3e460">
 
         <com.facebook.login.widget.LoginButton
             android:id="@+id/buttonFacebookLogin"
@@ -63,7 +91,7 @@
             android:layout_centerInParent="true"
             android:text="@string/sign_out"
             android:theme="@style/ThemeOverlay.MyDarkButton"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
     </RelativeLayout>
 

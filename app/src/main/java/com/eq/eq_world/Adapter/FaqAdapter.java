@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.eq.eq_world.Model.FaqItem;
 import com.eq.eq_world.R;
 
 import java.util.ArrayList;

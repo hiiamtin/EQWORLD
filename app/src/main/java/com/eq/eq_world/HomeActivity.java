@@ -29,7 +29,7 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
 
-    Button logout, cChat;
+    Button logout, cChat, btFaq, btAct, btSong;
     FirebaseUser firebaseUser;
     private FirebaseAuth mAuth;
 
@@ -55,6 +55,33 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomeActivity.this,CampHomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btAct = findViewById(R.id.btnlistact);
+        btAct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ListActActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btFaq = findViewById(R.id.btnFaq);
+        btFaq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), FaqActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btSong = findViewById(R.id.btn_song);
+        btSong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), SongActivity.class);
                 startActivity(intent);
             }
         });
