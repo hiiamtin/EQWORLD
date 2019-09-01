@@ -23,7 +23,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CampCreateActivity"></activity>
+        <activity android:name=".HomePageAvtivity"></activity>
+        <activity android:name=".CampCreateActivity" />
         <activity android:name=".HomeActivity" />
         <activity
             android:name=".CampListActivity"
