@@ -3,7 +3,9 @@ package com.eq.eq_world;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -11,6 +13,7 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,30 +23,23 @@ import com.eq.eq_world.Model.ListActItem;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListActActivity extends AppCompatActivity {
+public class ListActActivity extends Fragment {
     RecyclerView lARecyclerview;
     ListActAdapter lAAdapter;
     List<ListActItem> lAData;
     ConstraintLayout lALayout;
     EditText lASearchInput;
     CharSequence lAsearch = "";
-    Button btBack;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.activity_list_act,container,false);
 
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        super.onCreate(savedInstanceState);
-        // let's make this activity on full screen
-        setContentView(R.layout.activity_list_act);
 
-        // ini view
-
-        lALayout = findViewById(R.id.act_layout);
-        lASearchInput = findViewById(R.id.search_input_act);
-        lARecyclerview = findViewById(R.id.act_rv);
+        lALayout = view.findViewById(R.id.act_layout);
+        lASearchInput = view.findViewById(R.id.search_input_act);
+        lARecyclerview = view.findViewById(R.id.act_rv);
         lAData = new ArrayList<>();
 
 
@@ -305,9 +301,9 @@ public class ListActActivity extends AppCompatActivity {
 
         // adapter ini and setup
 
-        lAAdapter = new ListActAdapter(this,lAData);
+        lAAdapter = new ListActAdapter(view.getContext(),lAData);
         lARecyclerview.setAdapter(lAAdapter);
-        lARecyclerview.setLayoutManager(new LinearLayoutManager(this));
+        lARecyclerview.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
 
         lASearchInput.addTextChangedListener(new TextWatcher() {
@@ -332,15 +328,8 @@ public class ListActActivity extends AppCompatActivity {
             }
         });
 
-        btBack = findViewById(R.id.actback);
-        btBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
 
-
+        return view;
     }
 
 

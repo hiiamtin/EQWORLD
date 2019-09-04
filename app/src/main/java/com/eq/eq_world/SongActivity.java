@@ -3,7 +3,9 @@ package com.eq.eq_world;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -12,6 +14,7 @@ import android.widget.EditText;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,7 +24,7 @@ import com.eq.eq_world.Model.SongItem;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SongActivity extends AppCompatActivity {
+public class SongActivity extends Fragment {
     SongAdapter sAdapter;
     RecyclerView sRecyclerview;
     List<SongItem> sData;
@@ -31,18 +34,15 @@ public class SongActivity extends AppCompatActivity {
     Button btBack;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_song);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.activity_song,container,false);
 
         // ini view
 
-        sLayout = findViewById(R.id.song_layout);
-        sSearchInput = findViewById(R.id.search_input_song);
-        sRecyclerview = findViewById(R.id.song_rv);
+        sLayout = view.findViewById(R.id.song_layout);
+        sSearchInput = view.findViewById(R.id.search_input_song);
+        sRecyclerview = view.findViewById(R.id.song_rv);
         sData = new ArrayList<>();
 
         sData.add(new SongItem("ฮิปโป","2S24-y0Ij3Y"));
@@ -56,9 +56,9 @@ public class SongActivity extends AppCompatActivity {
         sData.add(new SongItem("ลิงกินกระท้อน","Nu2yQ1zYDYU"));
         sData.add(new SongItem("เก๊กฮสน","6eEZ7DJMzuk"));
 
-        sAdapter = new SongAdapter(this,sData);
+        sAdapter = new SongAdapter(view.getContext(),sData);
         sRecyclerview.setAdapter(sAdapter);
-        sRecyclerview.setLayoutManager(new LinearLayoutManager(this));
+        sRecyclerview.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
         sSearchInput.addTextChangedListener(new TextWatcher() {
             @Override
@@ -80,15 +80,7 @@ public class SongActivity extends AppCompatActivity {
             }
         });
 
-        btBack = findViewById(R.id.songback);
-        btBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-
-
+        return view;
     }
 
 

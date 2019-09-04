@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 
+import com.eq.eq_world.Adapter.CampAdapter;
 import com.eq.eq_world.Adapter.ViewPagerAdapter;
 import com.eq.eq_world.Fragments.CampAnnounceFragment;
 import com.eq.eq_world.Fragments.CampMemberFragment;
@@ -82,7 +83,7 @@ public class CampHomeActivity extends AppCompatActivity {
         memberList = new ArrayList<>();
 
         // Runtime Parameter
-        readMemberList("Camp name1");
+        readMemberList(CampAdapter.campid);
 
     }
 

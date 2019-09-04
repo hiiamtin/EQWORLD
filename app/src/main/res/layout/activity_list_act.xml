@@ -5,7 +5,7 @@
     android:id="@+id/act_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_list_act"
+    android:background="#FFFFFF"
     tools:context=".ListActActivity">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -13,7 +13,6 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,13 +23,10 @@
     <EditText
         android:id="@+id/search_input_act"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:background="@drawable/seach_input_style"
         android:drawableLeft="@drawable/ic_search_gray_24dp"
         android:drawablePadding="8dp"
         android:ems="10"
@@ -39,29 +35,6 @@
         android:textColor="@color/content_text_color"
         app:layout_constraintBottom_toTopOf="@+id/news_rv"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/acttopic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:layout_marginBottom="5dp"
-        android:text="WHOLE ACTIVITIES"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/search_input"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/actback"
-        android:layout_width="34dp"
-        android:layout_height="39dp"
-        android:foreground="@android:drawable/ic_menu_revert"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

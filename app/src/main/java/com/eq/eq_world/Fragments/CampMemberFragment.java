@@ -19,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.eq.eq_world.Adapter.CampAdapter;
 import com.eq.eq_world.Adapter.MemberAdapter;
 import com.eq.eq_world.CampHomeActivity;
 import com.eq.eq_world.GlobalStatus;
@@ -67,7 +68,7 @@ public class CampMemberFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if(txt_uid.getText().toString().trim().length()==28){
-                    addMemberToCamp(txt_uid.getText().toString(),"Camp name1");
+                    addMemberToCamp(txt_uid.getText().toString(), CampAdapter.campid);
                 }
                 else {
                     Toast.makeText(view.getContext(),"โปรดตรวจสอบ ID", Toast.LENGTH_LONG).show();

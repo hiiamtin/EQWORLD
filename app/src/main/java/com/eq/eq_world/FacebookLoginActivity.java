@@ -204,6 +204,7 @@ public class FacebookLoginActivity extends BaseActivity implements
 
             findViewById(R.id.buttonFacebookLogin).setVisibility(View.VISIBLE);
             findViewById(R.id.buttonFacebookSignout).setVisibility(View.GONE);
+            LoginManager.getInstance().logOut();
         }
     }
 
@@ -225,6 +226,7 @@ public class FacebookLoginActivity extends BaseActivity implements
         hashmap.put("id",userID);
         hashmap.put("username",display_name);
         hashmap.put("imageURL","default");
+        hashmap.put("role","S");
 
         reference.setValue(hashmap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

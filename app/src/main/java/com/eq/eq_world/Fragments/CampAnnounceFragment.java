@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 
+import com.eq.eq_world.Adapter.CampAdapter;
 import com.eq.eq_world.Adapter.MessageAdapter;
 import com.eq.eq_world.GlobalStatus;
 
@@ -67,7 +68,7 @@ public class CampAnnounceFragment extends Fragment {
         //intent = getIntent();
         //Virtual User
         fuser = FirebaseAuth.getInstance().getCurrentUser();
-        final String temp_campName = "Camp name1";
+        final String temp_campName = CampAdapter.campid;
         final String temp_uid = fuser.getUid();
 
         readMessage(temp_campName);
