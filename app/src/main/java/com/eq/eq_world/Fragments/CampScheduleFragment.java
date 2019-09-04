@@ -12,14 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.eq.eq_world.Adapter.DayScheduleAdapter;
-import com.eq.eq_world.Adapter.MessageAdapter;
-import com.eq.eq_world.CampHomeActivity;
 import com.eq.eq_world.Model.DaySchedule;
 import com.eq.eq_world.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -29,11 +28,11 @@ import java.util.List;
 
 public class CampScheduleFragment extends Fragment {
 
-    RecyclerView recyclerView;
-    DayScheduleAdapter dayScheduleAdapter;
-    List<DaySchedule> eventList;
-    DatabaseReference dbRef;
-    boolean done = false;
+    private RecyclerView recyclerView;
+    private DayScheduleAdapter dayScheduleAdapter;
+    private List<DaySchedule> eventList;
+    private DatabaseReference dbRef;
+    private boolean done = false;
 
 
     @Override
@@ -56,24 +55,25 @@ public class CampScheduleFragment extends Fragment {
         eventList = new ArrayList<>();
         dbRef = FirebaseDatabase.getInstance().getReference("Camps")
                 .child(camp).child("schedule");
+
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                long numOfDay = dataSnapshot.getChildrenCount();
                 eventList.clear();
-                    for (DataSnapshot snapdate : dataSnapshot.getChildren()) {
-                        DaySchedule daySchedule = new DaySchedule();
-                        HashMap<String,String> hashMap = new HashMap<>();
-                        daySchedule.setDate(snapdate.getKey());
-                        for (DataSnapshot snaptime : dataSnapshot.child(daySchedule.getDate())
-                                .getChildren()) {
-                            hashMap.put(snaptime.getKey(),snaptime.getValue(String.class));
-                        }
-                        daySchedule.events = hashMap;
-                        eventList.add(daySchedule);
+                for (DataSnapshot snapdate : dataSnapshot.getChildren()) {
+                    DaySchedule daySchedule = new DaySchedule();
+                    HashMap<String,String> hashMap = new HashMap<>();
+                    String day = snapdate.getKey();
+                    daySchedule.setDate(day);
+                    for (DataSnapshot snaptime : dataSnapshot.child(day).getChildren()) {
+                        hashMap.put(snaptime.getKey(),snaptime.getValue(String.class));
                     }
-                    dayScheduleAdapter = new DayScheduleAdapter(getContext(),eventList);
-                    recyclerView.setAdapter(dayScheduleAdapter);
+                    daySchedule.events = hashMap;
+                    eventList.add(daySchedule);
+                }
+
+                dayScheduleAdapter = new DayScheduleAdapter(getContext(),eventList);
+                recyclerView.setAdapter(dayScheduleAdapter);
             }
 
             @Override

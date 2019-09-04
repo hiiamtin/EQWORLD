@@ -21,7 +21,6 @@ import com.eq.eq_world.GlobalStatus;
 import com.eq.eq_world.Model.GroupAnnounce;
 import com.eq.eq_world.R;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -30,25 +29,23 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.database.core.utilities.Clock;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class CampAnnounceFragment extends Fragment {
 
-    FirebaseUser fuser;
-    DatabaseReference reference;
+    private FirebaseUser fuser;
+    private DatabaseReference reference;
 
-    ImageButton bt_send;
-    EditText text_send;
+    private ImageButton bt_send;
+    private EditText text_send;
 
-    MessageAdapter messageAdapter;
-    List<GroupAnnounce> mchat;
+    private MessageAdapter messageAdapter;
+    private List<GroupAnnounce> mchat;
 
-    RecyclerView recyclerView;
+    private RecyclerView recyclerView;
 
 
     @Override
