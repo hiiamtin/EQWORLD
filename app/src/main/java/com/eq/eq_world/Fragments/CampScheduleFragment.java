@@ -11,18 +11,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.eq.eq_world.Adapter.CampAdapter;
 import com.eq.eq_world.Adapter.DayScheduleAdapter;
 import com.eq.eq_world.Model.DaySchedule;
+import com.eq.eq_world.Model.SortByTime;
 import com.eq.eq_world.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -46,7 +47,7 @@ public class CampScheduleFragment extends Fragment {
         LinearLayoutManager linearLM = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLM);
 
-        readSchedule("Camp name1");
+        readSchedule(CampAdapter.campid);
 
         return view;
     }
@@ -61,17 +62,18 @@ public class CampScheduleFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 eventList.clear();
                 for (DataSnapshot snapdate : dataSnapshot.getChildren()) {
-                    DaySchedule daySchedule = new DaySchedule();
-                    HashMap<String,String> hashMap = new HashMap<>();
+                    List<DaySchedule> daily = new ArrayList<>();
                     String day = snapdate.getKey();
-                    daySchedule.setDate(day);
                     for (DataSnapshot snaptime : dataSnapshot.child(day).getChildren()) {
-                        hashMap.put(snaptime.getKey(),snaptime.getValue(String.class));
+                        daily.add(new DaySchedule(
+                                snaptime.getKey(),snaptime.getValue().toString(),day));
                     }
-                    daySchedule.events = hashMap;
-                    eventList.add(daySchedule);
+                    Collections.sort(daily,new SortByTime());
+                    daily.add(0,new DaySchedule(day,"date",null));
+                    eventList.addAll(daily);
                 }
 
+                eventList.add(new DaySchedule("+ เพิ่มกิจกรรม","new",null));
                 dayScheduleAdapter = new DayScheduleAdapter(getContext(),eventList);
                 recyclerView.setAdapter(dayScheduleAdapter);
             }

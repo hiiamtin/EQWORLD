@@ -10,6 +10,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 
 import com.eq.eq_world.Adapter.CampAdapter;
@@ -37,6 +38,7 @@ public class CampHomeActivity extends AppCompatActivity {
     ProgressDialog loadingBar;
     ImageButton bt_button;
     String myUID;
+    private TextView camp_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +59,8 @@ public class CampHomeActivity extends AppCompatActivity {
         viewPager.setAdapter(vpa);
         viewPager.setOffscreenPageLimit(1);
         tabLayout.setupWithViewPager(viewPager);
-
+        camp_name = findViewById(R.id.camp_name);
+        camp_name.setText(CampAdapter.campid);
 
         // loading bar config
         loadingBar = new ProgressDialog(this);
@@ -82,7 +85,6 @@ public class CampHomeActivity extends AppCompatActivity {
         mUsers = new ArrayList<>();
         memberList = new ArrayList<>();
 
-        // Runtime Parameter
         readMemberList(CampAdapter.campid);
 
     }

@@ -51,6 +51,7 @@ public class CampMemberFragment extends Fragment {
         bt_addMember = view.findViewById(R.id.add_member);
         add_bar = view.findViewById(R.id.add_bar);
         click = false;
+        bt_addMember.setVisibility(View.GONE);
         if(GlobalStatus.myRoleInThisCamp.equals("A")||GlobalStatus.myRoleInThisCamp.equals("H")){
             bt_addMember.setVisibility(View.VISIBLE);
         }

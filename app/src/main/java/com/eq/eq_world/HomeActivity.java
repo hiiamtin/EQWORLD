@@ -29,7 +29,7 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
 
-    Button logout, cChat, btFaq, btAct, btSong;
+    Button logout, cChat, btFaq, btAct, btSong, btCamp;
     FirebaseUser firebaseUser;
     private FirebaseAuth mAuth;
 
@@ -85,6 +85,16 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        btCamp = findViewById(R.id.btn_camp);
+        btCamp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), CampListActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
 
     }

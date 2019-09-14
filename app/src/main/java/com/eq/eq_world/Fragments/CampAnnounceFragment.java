@@ -65,13 +65,9 @@ public class CampAnnounceFragment extends Fragment {
         bt_send = view.findViewById(R.id.btn_send);
         text_send = view.findViewById(R.id.text_send);
 
-        //intent = getIntent();
-        //Virtual User
         fuser = FirebaseAuth.getInstance().getCurrentUser();
-        final String temp_campName = CampAdapter.campid;
-        final String temp_uid = fuser.getUid();
-
-        readMessage(temp_campName);
+        final String this_uid = fuser.getUid();
+        readMessage(CampAdapter.campid);
 
 
         bt_send.setOnClickListener(new View.OnClickListener() {
@@ -80,7 +76,7 @@ public class CampAnnounceFragment extends Fragment {
                 String msg = text_send.getText().toString().trim();
                 if(!msg.equals("")){
                     if(GlobalStatus.isConnectedToNet(getContext())) {
-                        sendMessage(temp_uid, msg, temp_campName);
+                        sendMessage(this_uid, msg, CampAdapter.campid);
                         text_send.setText("");
                     }
                     else{
@@ -91,7 +87,7 @@ public class CampAnnounceFragment extends Fragment {
             }
         });
 
-        reference = FirebaseDatabase.getInstance().getReference("Camps").child(temp_campName);
+        reference = FirebaseDatabase.getInstance().getReference("Camps").child(CampAdapter.campid);
 
 
         return view;

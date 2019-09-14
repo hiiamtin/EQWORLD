@@ -14,7 +14,7 @@
         android:text="+ เพิ่มสมาชิกใหม่"
         android:textSize="14dp"
         android:textColor="#000"
-        android:background="#30C9F7"
+        android:background="@color/colorFocus"
         android:id="@+id/add_member"/>
 
     <LinearLayout
@@ -23,7 +23,7 @@
         android:id="@+id/add_bar"
         android:visibility="gone"
         android:gravity="center_horizontal"
-        android:background="#30C9F7"
+        android:background="@color/colorFocus"
         android:orientation="vertical">
 
         <com.rengwuxian.materialedittext.MaterialEditText

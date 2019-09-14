@@ -25,7 +25,7 @@ import java.util.List;
 
 public class CampAdapter extends RecyclerView.Adapter<CampAdapter.ViewHolder> {
 
-    public  static String campid;
+    public static String campid;
 
     private Context context;
     private List<Camp> campList;
