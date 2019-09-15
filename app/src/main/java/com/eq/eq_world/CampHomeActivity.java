@@ -2,6 +2,8 @@ package com.eq.eq_world;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 
@@ -35,9 +37,9 @@ public class CampHomeActivity extends AppCompatActivity {
 
     public static List<String> mUsers;
     public static List<CampUser> memberList;
-    ProgressDialog loadingBar;
-    ImageButton bt_button;
-    String myUID;
+    private ProgressDialog loadingBar;
+    private ImageButton bt_button;
+    private String myUID;
     private TextView camp_name;
 
     @Override
@@ -47,18 +49,8 @@ public class CampHomeActivity extends AppCompatActivity {
 
         myUID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        // ui fragment config
-        TabLayout tabLayout = findViewById(R.id.tab_layout);
-        ViewPager viewPager = findViewById(R.id.view_pager);
-        ViewPagerAdapter vpa =
-                new ViewPagerAdapter(getSupportFragmentManager());
-        vpa.addFragments(new CampAnnounceFragment(), "Announcements");
-        vpa.addFragments(new CampScheduleFragment(), "Schedule");
-        vpa.addFragments(new CampMemberFragment(), "Members");
-        vpa.addFragments(new CampSettingFragment(), "Settings");
-        viewPager.setAdapter(vpa);
-        viewPager.setOffscreenPageLimit(1);
-        tabLayout.setupWithViewPager(viewPager);
+        navigationTabConfig();
+
         camp_name = findViewById(R.id.camp_name);
         camp_name.setText(CampAdapter.campid);
 
@@ -126,6 +118,54 @@ public class CampHomeActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void navigationTabConfig(){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, new CampAnnounceFragment());
+        transaction.commit();
+
+        ImageButton bt_chat, bt_schedule, bt_member, bt_setting;
+
+        bt_chat = findViewById(R.id.bt_chat);
+        bt_chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container, new CampAnnounceFragment());
+                transaction.commit();
+            }
+        });
+
+        bt_schedule = findViewById(R.id.bt_schedule);
+        bt_schedule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container, new CampScheduleFragment());
+                transaction.commit();
+            }
+        });
+
+        bt_member = findViewById(R.id.bt_member);
+        bt_member.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container, new CampMemberFragment());
+                transaction.commit();
+            }
+        });
+
+        bt_setting = findViewById(R.id.bt_setting);
+        bt_setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container, new CampSettingFragment());
+                transaction.commit();
+            }
+        });
     }
 
 
