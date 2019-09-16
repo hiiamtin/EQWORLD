@@ -64,6 +64,11 @@ public class DayScheduleAdapter extends RecyclerView.Adapter<DayScheduleAdapter.
                     mContext.startActivity(intent);
                 }
             });
+
+            holder.event_box.setVisibility(View.GONE);
+            if(!GlobalStatus.myRoleInThisCamp.equals("S")){
+                holder.event_box.setVisibility(View.VISIBLE);
+            }
         }
         else{
             holder.show_obj.setText(daySchedule.getObjective());

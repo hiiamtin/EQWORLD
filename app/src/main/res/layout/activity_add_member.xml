@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AddMemberActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFF"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/bt_back"
+            android:src="@drawable/ic_goback"
+            android:background="#2196F3"/>
+
+        <TextView
+            android:gravity="center_vertical"
+            android:id="@+id/camp_name"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:paddingLeft="10dp"
+            android:text="เพิ่มสมาชิกใหม่"
+            android:textColor="#118BD1"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/add_bar"
+        android:gravity="center_horizontal"
+        android:background="#EEE"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_marginTop="20dp"
+            android:id="@+id/bt_scan"
+            android:layout_width="match_parent"
+            android:background="@color/colorPrimary"
+            android:layout_height="wrap_content"
+            android:text="สแกนบาร์โดค"/>
+
+        <RadioGroup
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="ตำแหน่ง : "/>
+
+            <RadioButton android:id="@+id/radio_head"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Head"
+                android:textSize="18dp" />
+
+            <RadioButton android:id="@+id/radio_staff"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Staff"
+                android:textSize="18dp" />
+
+        </RadioGroup>
+
+        <Button
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFC107"
+            android:textColor="#000"
+            android:id="@+id/push_member"
+            android:text="เพิ่มสมาชิก"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>
