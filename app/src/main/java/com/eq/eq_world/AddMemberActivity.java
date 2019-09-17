@@ -26,7 +26,7 @@ public class AddMemberActivity extends AppCompatActivity {
     private Button push_member, bt_scan;
     private ImageButton bt_back;
     private RadioButton r_head, r_staff;
-    private String productId;
+    private String[] productId;
 
 
     @Override
@@ -55,7 +55,7 @@ public class AddMemberActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(productId != null){
-                    addMemberToCamp(productId, CampAdapter.campid);
+                    addMemberToCamp(productId[1], CampAdapter.campid);
                 }
             }
         });
@@ -82,6 +82,9 @@ public class AddMemberActivity extends AppCompatActivity {
         if(selectedRole().equals("X")){
             Toast.makeText(this,"โปรดเลือกตำแหน่ง", Toast.LENGTH_LONG).show();
         }
+        else if(isInCamp(id)){
+            Toast.makeText(this,"ผู้ใช้นี้เป็นสมาชิกในค่ายอยู่แล้ว", Toast.LENGTH_LONG).show();
+        }
         else {
             dbRef.child(id).setValue(selectedRole());
             Toast.makeText(this,"เพิ่มสมาชิกสำเร็จแล้ว",Toast.LENGTH_SHORT).show();
@@ -94,8 +97,29 @@ public class AddMemberActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         IntentResult intentResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (intentResult != null) {
-            productId = intentResult.getContents();
-            bt_scan.setText(productId);
+            String input = intentResult.getContents();
+            try{
+                productId = input.split("@");
+                if(productId[0].equals("EQ")){
+                    bt_scan.setText(productId[2]);
+                }
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
         }
     }
+
+    private boolean isInCamp(String uid){
+        String[] data;
+        for (String ele : CampHomeActivity.mUsers) {
+            data = ele.split("@");
+            if (data[0].equals(uid)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 }

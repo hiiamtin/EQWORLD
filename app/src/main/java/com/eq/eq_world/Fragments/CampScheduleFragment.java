@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.eq.eq_world.Adapter.CampAdapter;
 import com.eq.eq_world.Adapter.DayScheduleAdapter;
+import com.eq.eq_world.GlobalStatus;
 import com.eq.eq_world.Model.DaySchedule;
 import com.eq.eq_world.Model.SortByTime;
 import com.eq.eq_world.R;
@@ -47,7 +48,7 @@ public class CampScheduleFragment extends Fragment {
         LinearLayoutManager linearLM = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLM);
 
-        readSchedule(CampAdapter.campid);
+        readSchedule(GlobalStatus.currentCamp);
 
         return view;
     }

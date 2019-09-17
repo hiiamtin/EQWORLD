@@ -17,6 +17,7 @@ import android.widget.ImageButton;
 
 import com.eq.eq_world.Adapter.CampAdapter;
 import com.eq.eq_world.Adapter.MessageAdapter;
+import com.eq.eq_world.CampHomeActivity;
 import com.eq.eq_world.GlobalStatus;
 
 import com.eq.eq_world.Model.GroupAnnounce;
@@ -67,7 +68,7 @@ public class CampAnnounceFragment extends Fragment {
 
         fuser = FirebaseAuth.getInstance().getCurrentUser();
         final String this_uid = fuser.getUid();
-        readMessage(CampAdapter.campid);
+        readMessage(GlobalStatus.currentCamp);
 
 
         bt_send.setOnClickListener(new View.OnClickListener() {
@@ -86,10 +87,6 @@ public class CampAnnounceFragment extends Fragment {
                 else text_send.setText("");
             }
         });
-
-        reference = FirebaseDatabase.getInstance().getReference("Camps").child(CampAdapter.campid);
-
-
         return view;
     }
 
@@ -107,6 +104,8 @@ public class CampAnnounceFragment extends Fragment {
     private void readMessage(final String camp){
         mchat = new ArrayList<>();
 
+        reference = FirebaseDatabase.getInstance().getReference("Camps")
+                .child(GlobalStatus.currentCamp);
         reference = FirebaseDatabase.getInstance().getReference();
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -121,8 +120,6 @@ public class CampAnnounceFragment extends Fragment {
                 }
 
             }
-
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -130,7 +127,5 @@ public class CampAnnounceFragment extends Fragment {
         });
 
     }
-
-
 
 }

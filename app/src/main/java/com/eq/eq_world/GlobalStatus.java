@@ -4,12 +4,13 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-
+import com.eq.eq_world.Model.CampUser;
 
 
 public class GlobalStatus {
 
-    public static String currentUid, currentUsername, currentCamp, currentImg, myRoleInThisCamp="",myRole="";
+    public static String myRoleInThisCamp="",myRole="",currentCamp="";
+    public static CampUser myAccount;
 
     public static boolean isConnectedToNet(Context context){
         ConnectivityManager connectivityManager =
@@ -21,12 +22,6 @@ public class GlobalStatus {
             isConnect = (active != null)&&(active.isConnectedOrConnecting());
         }
         return isConnect;
-    }
-
-    public void clearAll(){
-        this.currentUid = "";
-        this.currentUsername = "";
-        this.currentCamp = "";
     }
 
 }

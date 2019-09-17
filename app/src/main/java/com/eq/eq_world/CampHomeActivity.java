@@ -47,6 +47,8 @@ public class CampHomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camp_home);
 
+        GlobalStatus.currentCamp = CampAdapter.campid;
+
         myUID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         navigationTabConfig();
@@ -103,7 +105,7 @@ public class CampHomeActivity extends AppCompatActivity {
                     String[] uid = memberID.split("@");
                     CampUser member = dataSnapshot.child("Users").child(uid[0])
                             .getValue(CampUser.class);
-                    member.setRole(uid[1]);
+                    member.setRole(uid[1]); ///
                     memberList.add(member);
                     if(member.getId().equals(myUID)){
                         GlobalStatus.myRoleInThisCamp = member.getRole();

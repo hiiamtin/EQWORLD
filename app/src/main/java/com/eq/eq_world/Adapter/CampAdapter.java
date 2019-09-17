@@ -99,7 +99,7 @@ public class CampAdapter extends RecyclerView.Adapter<CampAdapter.ViewHolder> {
                 if(0==password.compareTo(m_Text)){
                     campid = campList.get(viewHolder.getAdapterPosition()).getCampID();
                     for (String s: campList.get(viewHolder.getAdapterPosition()).getMembers()) {
-                        if(GlobalStatus.currentUid.equals(s)){
+                        if(GlobalStatus.myAccount.getId().equals(s)){
                             access = true;
                             break;
                         }
@@ -108,7 +108,10 @@ public class CampAdapter extends RecyclerView.Adapter<CampAdapter.ViewHolder> {
                         Intent intent = new Intent(context, CampHomeActivity.class);
                         context.startActivity(intent);
                     }else{
-                        Toast.makeText(context,"you don't have permission to access!\n"+GlobalStatus.currentUid+"\n"+campList.get(viewHolder.getAdapterPosition()).getMembers(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context,"you don't have permission to access!\n"+
+                                GlobalStatus.myAccount.getId()+"\n"+campList
+                                .get(viewHolder.getAdapterPosition())
+                                .getMembers(),Toast.LENGTH_SHORT).show();
                     }
                 }
                 else{

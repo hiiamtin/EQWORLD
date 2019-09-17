@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.eq.eq_world.Model.CampUser;
 import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -31,17 +33,12 @@ import java.util.List;
 public class HomeActivity extends AppCompatActivity {
 
     Button logout, cChat, btFaq, btAct, btSong, btCamp;
-    FirebaseUser firebaseUser;
     private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-        mAuth = FirebaseAuth.getInstance();
-        GlobalStatus.currentUid = mAuth.getCurrentUser().getUid();
-        loadUserInfo(mAuth.getCurrentUser().getUid());
 
         logout = findViewById(R.id.out);
         logout.setOnClickListener(new View.OnClickListener() {
@@ -106,13 +103,9 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
         //JUST DEBUGGING <<<<
-
-
-
     }
 
     private void signOut(){
-        String text="";
         List<? extends UserInfo> providerData = mAuth.getCurrentUser().getProviderData();
         for (UserInfo userInfo : providerData) {
             switch (userInfo.getProviderId()){
@@ -141,15 +134,17 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    private void loadUserInfo(String uid){
-        final DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("Users")
-                .child(uid);
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mAuth = FirebaseAuth.getInstance();
+
+        final DatabaseReference dbRef = FirebaseDatabase.getInstance()
+                .getReference("Users").child(mAuth.getCurrentUser().getUid());
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                GlobalStatus.currentUsername = dataSnapshot.child("username").getValue(String.class);
-                GlobalStatus.currentImg = dataSnapshot.child("imageURL").getValue(String.class);
-                GlobalStatus.myRole = dataSnapshot.child("role").getValue(String.class);
+                GlobalStatus.myAccount = dataSnapshot.getValue(CampUser.class);
             }
 
             @Override

@@ -1,32 +1,26 @@
 package com.eq.eq_world;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.TextView;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 
+import com.eq.eq_world.Model.CampUser;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.zxing.BarcodeFormat;
-import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
-import com.google.zxing.Writer;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
-import com.google.zxing.oned.Code128Writer;
-import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
-
-import java.util.Hashtable;
 
 public class MyAccountActivity extends AppCompatActivity {
-
-    private int white = 0xFFFFFFFF;
-    private int blue = 0xFF118BD1;
 
     ImageView imageViewResult;
 
@@ -36,18 +30,12 @@ public class MyAccountActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_account);
 
         imageViewResult = findViewById(R.id.imageViewResult);
-        try{
-            Bitmap bmp =  encodeAsBitmap(GlobalStatus.currentUid);
-            imageViewResult.setImageBitmap(bmp);
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
     }
-
 
     Bitmap encodeAsBitmap(String str) throws WriterException {
         BitMatrix result;
+        final int WHITE = 0xFFFFFFFF;
+        final int BLUE = 0xFF118BD1;
         try {
             result = new MultiFormatWriter()
                     .encode(str, BarcodeFormat.QR_CODE, 400, 400, null);
@@ -61,12 +49,44 @@ public class MyAccountActivity extends AppCompatActivity {
         for (int y = 0; y < h; y++) {
             int offset = y * w;
             for (int x = 0; x < w; x++) {
-                pixels[offset + x] = result.get(x, y) ? blue : white;
+                pixels[offset + x] = result.get(x, y) ? BLUE : WHITE;
             }
         }
         Bitmap bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
         bitmap.setPixels(pixels, 0, 400, 0, 0, w, h);
         return bitmap;
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
+        final DatabaseReference dbRef = FirebaseDatabase.getInstance()
+                .getReference("Users").child(mAuth.getCurrentUser().getUid());
+        dbRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    GlobalStatus.myAccount = dataSnapshot.getValue(CampUser.class);
+                    try{
+                        String qr = "EQ@" + GlobalStatus.myAccount.getId() + "@"
+                                + GlobalStatus.myAccount.getUsername();
+                        Bitmap bmp = encodeAsBitmap(qr);
+                        imageViewResult.setImageBitmap(bmp);
+                        TextView textdebug = findViewById(R.id.textdebug);
+                        textdebug.setText(qr);
+                    }
+                    catch (Exception e){
+                        e.printStackTrace();
+                    }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
 
 }
