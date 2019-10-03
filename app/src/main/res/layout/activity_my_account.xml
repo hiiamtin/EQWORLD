@@ -3,15 +3,88 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="#fff"
     android:orientation="vertical"
     tools:ignore="HardcodedText">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:background="#222"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textdebug"
-        android:text="My Barcode"/>
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/bt_back"
+            android:src="@drawable/ic_goback"
+            android:background="#2196F3"/>
+
+        <TextView
+            android:gravity="center_vertical"
+            android:id="@+id/txt_user"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:paddingLeft="10dp"
+            android:text="Loading"
+            android:textColor="#2196F3"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="#fff"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="20dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="120dp"
+            android:id="@+id/img_user"
+            android:layout_height="120dp" />
+
+        <LinearLayout
+            android:layout_marginLeft="20dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/bt_staff"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:background="#2196F3"
+                android:textColor="#fff"
+                android:textSize="14dp"
+                android:text="หน้าสมาชิกค่าย"/>
+
+            <Button
+                android:layout_marginTop="10dp"
+                android:id="@+id/bt_faq"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:background="#2196F3"
+                android:textColor="#fff"
+                android:textSize="14dp"
+                android:text="คำถามที่พบบ่อย"/>
+
+            <Button
+                android:layout_marginTop="10dp"
+                android:id="@+id/bt_out"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:background="#2196F3"
+                android:textColor="#fff"
+                android:textSize="14dp"
+                android:text="ออกจากระบบ"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/imageViewResult"

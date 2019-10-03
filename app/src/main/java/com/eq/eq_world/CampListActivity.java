@@ -22,6 +22,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -39,9 +41,12 @@ public class CampListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camp_list);
+
+        /* Tintin's code
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Camps");
         setSupportActionBar(toolbar);
+        */
 
         FloatingActionButton fab = findViewById(R.id.fab);
         if(GlobalStatus.myRole.equals("A")){
@@ -81,6 +86,14 @@ public class CampListActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
+            }
+        });
+
+        ImageButton bt_back = findViewById(R.id.bt_back);
+        bt_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
 

@@ -3,13 +3,23 @@ package com.eq.eq_world;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.graphics.Bitmap;
+import android.widget.Toast;
 
 import com.eq.eq_world.Model.CampUser;
+import com.facebook.login.LoginManager;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.UserInfo;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,9 +30,12 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 
+import java.util.List;
+
 public class MyAccountActivity extends AppCompatActivity {
 
     ImageView imageViewResult;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +43,8 @@ public class MyAccountActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_account);
 
         imageViewResult = findViewById(R.id.imageViewResult);
+        setUpAllButton();
+
     }
 
     Bitmap encodeAsBitmap(String str) throws WriterException {
@@ -60,7 +75,7 @@ public class MyAccountActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
 
         final DatabaseReference dbRef = FirebaseDatabase.getInstance()
                 .getReference("Users").child(mAuth.getCurrentUser().getUid());
@@ -73,8 +88,13 @@ public class MyAccountActivity extends AppCompatActivity {
                                 + GlobalStatus.myAccount.getUsername();
                         Bitmap bmp = encodeAsBitmap(qr);
                         imageViewResult.setImageBitmap(bmp);
-                        TextView textdebug = findViewById(R.id.textdebug);
-                        textdebug.setText(qr);
+
+                        TextView show_user = findViewById(R.id.txt_user);
+                        show_user.setText(GlobalStatus.myAccount.getUsername());
+
+                        ImageView profile_image = findViewById(R.id.img_user);
+                        profile_image.setImageResource(R.mipmap.ic_launcher);
+
                     }
                     catch (Exception e){
                         e.printStackTrace();
@@ -86,7 +106,79 @@ public class MyAccountActivity extends AppCompatActivity {
 
             }
         });
+
     }
+
+    public void setUpAllButton(){
+        ImageButton imageButton = findViewById(R.id.bt_back);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+        Button bt_staff = findViewById(R.id.bt_staff);
+        bt_staff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),CampListActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        Button bt_faq = findViewById(R.id.bt_faq);
+        bt_faq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),FaqActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        Button bt_out = findViewById(R.id.bt_out);
+        bt_out.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),CampListActivity.class);
+                startActivity(intent);
+                signOut();
+                finish();
+            }
+        });
+    }
+
+    private void signOut(){
+        List<? extends UserInfo> providerData = mAuth.getCurrentUser().getProviderData();
+        for (UserInfo userInfo : providerData) {
+            switch (userInfo.getProviderId()){
+                case "facebook.com":
+                    LoginManager.getInstance().logOut();
+                    Toast.makeText(this, "facebook logout" ,Toast.LENGTH_SHORT).show();
+            }
+        }
+        mAuth.signOut();
+
+
+        // Google sign out
+        GoogleSignInClient mGoogleSignInClient;
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken("34452559215-h1fghpvh56e9kc68ej211qvriejfakb3.apps.googleusercontent.com")
+                .requestEmail()
+                .build();
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        mGoogleSignInClient.signOut();
+        /*if(FacebookLoginActivity.tokenFB!=null){
+            LoginManager.getInstance().logOut();
+        }*/
+        Intent goMain = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(goMain);
+        finish();
+
+    }
+
 
 
 }

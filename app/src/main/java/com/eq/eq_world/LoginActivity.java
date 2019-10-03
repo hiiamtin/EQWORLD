@@ -186,7 +186,7 @@ public class LoginActivity extends BaseActivity implements
 
             //findViewById(R.id.verifyEmailButton).setEnabled(!user.isEmailVerified());
 
-            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+            Intent intent = new Intent(LoginActivity.this, HomePageAvtivity.class);
 
             startActivity(intent);
             finish();

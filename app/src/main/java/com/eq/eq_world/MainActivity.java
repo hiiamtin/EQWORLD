@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         // GO TO MAIN MENU AUTOMATICALLY
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if(firebaseUser != null){
-            Intent chatMenu = new Intent(this,HomeActivity.class);
+            Intent chatMenu = new Intent(this,HomePageAvtivity.class);
             startActivity(chatMenu);
         }
     }

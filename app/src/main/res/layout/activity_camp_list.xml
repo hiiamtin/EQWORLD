@@ -1,24 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".CampListActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <LinearLayout
+        android:background="#222"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:orientation="horizontal">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/bt_back"
+            android:src="@drawable/ic_goback"
+            android:background="#2196F3"/>
+
+        <TextView
+            android:gravity="center_vertical"
+            android:id="@+id/txt_user"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            android:layout_height="40dp"
+            android:paddingLeft="10dp"
+            android:text="Camps"
+            android:textColor="#2196F3"
+            android:textSize="18dp"
+            android:textStyle="bold" />
 
-    </com.google.android.material.appbar.AppBarLayout>
+    </LinearLayout>
 
     <include layout="@layout/content_camp_list" />
 
@@ -31,4 +44,4 @@
         app:backgroundTint="#00BCD4"
         app:srcCompat="@drawable/ic_add_white_24dp" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>
