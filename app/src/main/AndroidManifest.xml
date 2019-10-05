@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <supports-screens
         android:largeScreens="false"
@@ -28,12 +30,10 @@
         <activity android:name=".CreateTaskActivity" />
         <activity android:name=".HomePageAvtivity" />
         <activity android:name=".CampCreateActivity" />
-        <activity android:name=".HomeActivity" />
         <activity
             android:name=".CampListActivity"
             android:label="@string/title_activity_camp_list"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".HomeActivity" />
         <activity android:name=".GoogleSignInActivity" />
         <activity android:name=".FacebookLoginActivity" />
         <activity android:name=".BaseActivity" />

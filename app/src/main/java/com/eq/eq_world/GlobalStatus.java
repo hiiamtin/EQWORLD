@@ -13,7 +13,7 @@ public class GlobalStatus {
 
     public static String myRoleInThisCamp="",myRole="",currentCamp="";
     public static CampUser myAccount;
-    public final String VERSION = "003";
+    public final static String VERSION = "0.3";
 
     public static boolean isConnectedToNet(Context context){
         ConnectivityManager connectivityManager =

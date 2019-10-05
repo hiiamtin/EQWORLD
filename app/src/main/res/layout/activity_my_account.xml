@@ -3,8 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#fff"
     android:orientation="vertical"
+    android:gravity="center_horizontal"
     tools:ignore="HardcodedText">
 
     <LinearLayout
@@ -42,12 +44,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
+            app:civ_border_width="4dp"
+            app:civ_border_color="#2196F3"
             android:layout_width="120dp"
             android:id="@+id/img_user"
             android:layout_height="120dp" />
 
         <LinearLayout
+            android:id="@+id/button_layout"
+            android:visibility="invisible"
             android:layout_marginLeft="20dp"
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -90,5 +96,33 @@
         android:id="@+id/imageViewResult"
         android:layout_width="match_parent"
         android:layout_height="200dp" />
+
+    <LinearLayout
+        android:paddingBottom="15dp"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textColor="#7E8385"
+            android:textSize="16dp"
+            android:text="EQGroup สร้างความสุขสู่ความสำเร็จ"/>
+
+        <TextView
+            android:id="@+id/version"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="#7E8385"
+            android:textSize="16dp"
+            android:text="Application"/>
+
+    </LinearLayout>
+
 
 </LinearLayout>
