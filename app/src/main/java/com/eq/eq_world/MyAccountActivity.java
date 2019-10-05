@@ -175,6 +175,9 @@ public class MyAccountActivity extends AppCompatActivity {
         }*/
         Intent goMain = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(goMain);
+
+        GlobalStatus.clearUserData();
+
         finish();
 
     }

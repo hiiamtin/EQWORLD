@@ -8,12 +8,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.eq.eq_world.Adapter.ViewPagerAdapter;
 import com.eq.eq_world.Fragments.CampAnnounceFragment;
 import com.eq.eq_world.Fragments.CampMemberFragment;
 import com.eq.eq_world.Fragments.CampScheduleFragment;
 import com.eq.eq_world.Fragments.CampSettingFragment;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
 public class HomePageAvtivity extends AppCompatActivity {
@@ -41,12 +44,15 @@ public class HomePageAvtivity extends AppCompatActivity {
         bt_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),MyAccountActivity.class);
-                startActivity(intent);
+                if(GlobalStatus.isConnectedToNet(getApplicationContext())){
+                    Intent intent = new Intent(getApplicationContext(),MyAccountActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    Snackbar.make(view,"โปรดเชื่อมต่ออินเตอร์เน็ต",Snackbar.LENGTH_SHORT).show();
+                }
             }
         });
 
     }
-
-
 }

@@ -8,12 +8,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.eq.eq_world.R;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class CampSettingFragment extends Fragment {
 
 
@@ -22,7 +20,7 @@ public class CampSettingFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_camp_setting,container,false);
 
-        //onCreate here
+
 
         return view;
     }
