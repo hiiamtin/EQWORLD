@@ -62,23 +62,19 @@
 
                     <Button
                         android:id="@+id/btnSignIn"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/btnlogin_bg"
-                        android:paddingLeft="101dp"
-                        android:paddingRight="101dp"
                         android:text="sign in"
                         android:textColor="@color/bgBtnSignUp"
                         android:textAllCaps="true"/>
 
                     <Button
                         android:id="@+id/btnSignUp"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="25dp"
                         android:background="@drawable/btnsignup_bg"
-                        android:paddingLeft="100dp"
-                        android:paddingRight="100dp"
                         android:text="sign up"
                         android:textColor="@color/bgBtnLogIn"
                         android:textAllCaps="true"/>

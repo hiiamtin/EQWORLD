@@ -8,6 +8,7 @@
     tools:context=".CampListActivity">
 
     <LinearLayout
+        android:padding="6dp"
         android:background="#222"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

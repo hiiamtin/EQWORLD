@@ -6,12 +6,9 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
+
 import android.widget.EditText;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,12 +21,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListActActivity extends Fragment {
-    RecyclerView lARecyclerview;
-    ListActAdapter lAAdapter;
-    List<ListActItem> lAData;
-    ConstraintLayout lALayout;
-    EditText lASearchInput;
-    CharSequence lAsearch = "";
+    private RecyclerView lARecyclerview;
+    private ListActAdapter lAAdapter;
+    private List<ListActItem> lAData;
+    private ConstraintLayout lALayout;
+    private EditText lASearchInput;
+    private CharSequence lAsearch = "";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

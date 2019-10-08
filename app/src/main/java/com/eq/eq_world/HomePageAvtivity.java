@@ -6,16 +6,12 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+
 import android.widget.ImageButton;
-import android.widget.TextView;
-import android.widget.Toast;
+
 
 import com.eq.eq_world.Adapter.ViewPagerAdapter;
-import com.eq.eq_world.Fragments.CampAnnounceFragment;
-import com.eq.eq_world.Fragments.CampMemberFragment;
-import com.eq.eq_world.Fragments.CampScheduleFragment;
-import com.eq.eq_world.Fragments.CampSettingFragment;
+
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 

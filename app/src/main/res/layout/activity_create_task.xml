@@ -8,6 +8,7 @@
     tools:context=".CreateTaskActivity">
 
     <LinearLayout
+        android:padding="6dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFF"

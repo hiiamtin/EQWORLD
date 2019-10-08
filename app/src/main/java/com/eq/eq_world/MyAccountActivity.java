@@ -137,12 +137,12 @@ public class MyAccountActivity extends AppCompatActivity {
                         map.put("imageURL",mUri);
                         reference.updateChildren(map);
 
-                        loadingBar.dismiss();
+                        //////////////loadingBar.dismiss();
 
                     }
                     else {
                         Toast.makeText(getApplicationContext(),"Failed",Toast.LENGTH_SHORT).show();
-                        loadingBar.dismiss();
+                        ///////////loadingBar.dismiss();
                     }
 
                 }
@@ -150,7 +150,7 @@ public class MyAccountActivity extends AppCompatActivity {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
-                    loadingBar.dismiss();
+                    ///////loadingBar.dismiss();
                 }
             });
         }

@@ -2,9 +2,7 @@ package com.eq.eq_world;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager.widget.ViewPager;
 
 
 import android.app.ProgressDialog;
@@ -16,13 +14,11 @@ import android.widget.TextView;
 
 
 import com.eq.eq_world.Adapter.CampAdapter;
-import com.eq.eq_world.Adapter.ViewPagerAdapter;
 import com.eq.eq_world.Fragments.CampAnnounceFragment;
 import com.eq.eq_world.Fragments.CampMemberFragment;
 import com.eq.eq_world.Fragments.CampScheduleFragment;
 import com.eq.eq_world.Fragments.CampSettingFragment;
 import com.eq.eq_world.Model.CampUser;
-import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

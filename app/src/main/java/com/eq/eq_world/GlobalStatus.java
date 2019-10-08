@@ -3,10 +3,8 @@ package com.eq.eq_world;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.Build;
 
 import com.eq.eq_world.Model.CampUser;
-import com.google.firebase.auth.FirebaseUser;
 
 
 public class GlobalStatus {
