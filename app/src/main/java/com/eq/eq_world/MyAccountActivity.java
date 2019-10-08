@@ -232,7 +232,7 @@ public class MyAccountActivity extends AppCompatActivity {
                         show_user.setText(GlobalStatus.myAccount.getUsername());
 
                         if(GlobalStatus.myAccount.getImageURL().equals("default")){
-                            profile_image.setImageResource(R.mipmap.ic_launcher);
+                            profile_image.setImageResource(R.drawable.uploadpic);
                         }
                         else{
                             Glide.with(getApplicationContext())

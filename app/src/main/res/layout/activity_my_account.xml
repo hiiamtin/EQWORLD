@@ -52,6 +52,7 @@
             android:layout_height="120dp" />
 
         <LinearLayout
+            android:paddingBottom="2dp"
             android:id="@+id/button_layout"
             android:visibility="invisible"
             android:layout_marginLeft="20dp"

@@ -105,10 +105,12 @@ public class CampHomeActivity extends AppCompatActivity {
                     String[] uid = memberID.split("@");
                     CampUser member = dataSnapshot.child("Users").child(uid[0])
                             .getValue(CampUser.class);
-                    member.setRole(uid[1]); ///
-                    memberList.add(member);
-                    if(member.getId().equals(myUID)){
-                        GlobalStatus.myRoleInThisCamp = member.getRole();
+                    if(member!=null){
+                        member.setRole(uid[1]);
+                        memberList.add(member);
+                        if(member.getId().equals(myUID)){
+                            GlobalStatus.myRoleInThisCamp = member.getRole();
+                        }
                     }
                 }
                 loadingBar.dismiss();
