@@ -37,6 +37,11 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:background="#555"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"/>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"

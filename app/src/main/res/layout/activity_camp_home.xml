@@ -9,6 +9,7 @@
     tools:context=".CampHomeActivity">
 
     <LinearLayout
+        android:background="#00BEFF"
         android:padding="6dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,7 +20,7 @@
             android:layout_height="40dp"
             android:id="@+id/bt_back"
             android:src="@drawable/ic_goback"
-            android:background="#2196F3"/>
+            android:background="#222"/>
 
         <TextView
             android:gravity="center_vertical"
@@ -28,7 +29,7 @@
             android:layout_height="40dp"
             android:paddingLeft="10dp"
             android:text="CE Smart Camp 99"
-            android:textColor="#118BD1"
+            android:textColor="#222"
             android:textSize="18dp"
             android:textStyle="bold" />
 

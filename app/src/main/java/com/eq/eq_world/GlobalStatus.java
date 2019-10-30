@@ -11,7 +11,7 @@ public class GlobalStatus {
 
     public static String myRoleInThisCamp="",myRole="",currentCamp="";
     public static CampUser myAccount;
-    public final static String VERSION = "0.3";
+    public final static String VERSION = "0.4";
 
     public static boolean isConnectedToNet(Context context){
         ConnectivityManager connectivityManager =

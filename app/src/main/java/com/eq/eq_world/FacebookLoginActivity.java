@@ -28,8 +28,11 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -219,20 +222,34 @@ public class FacebookLoginActivity extends BaseActivity implements
 
         reference = FirebaseDatabase.getInstance().getReference("Users").child(userID);
 
-        HashMap<String,String> hashmap = new HashMap<>();
+        final HashMap<String,String> hashmap = new HashMap<>();
         hashmap.put("id",userID);
         hashmap.put("username",display_name);
         hashmap.put("imageURL","default");
         hashmap.put("role","S");
 
-        reference.setValue(hashmap).addOnCompleteListener(new OnCompleteListener<Void>() {
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
-                    Toast.makeText(getApplicationContext(),"Done!",Toast.LENGTH_SHORT).show();
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(!dataSnapshot.exists()){
+                    reference.setValue(hashmap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(getApplicationContext(), "Success!", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
                 }
             }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
         });
+
+
 
     }
     //test
